@@ -1,30 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap');
+
 body {
   font-family: 'Oxygen Mono', monospace;
   font-size: 16px;
   line-height: 1.5;
-  max-width: 650px;
+  max-width: 850px;
+  width: 90%;
   margin: 0 auto;
   padding: 1em;
-  color: #333;
+  color: #E6E6E6;
+  background-color: #1E1E1E;
 }
 
 a {
-  color: #333;
+  color: #9CDCFE;
   text-decoration: none;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #9CDCFE;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+a:hover {
+  color: #CE9178;
+  border-bottom-color: #CE9178;
 }
 
 h1, h2, h3 {
   font-weight: normal;
+  color: #E06C75;
 }
 
 article {
   margin-bottom: 2em;
+  padding: 1em;
+  background-color: #252526;
+  border-radius: 4px;
 }
 
 .post-info {
   margin-bottom: 1em;
   font-size: 0.9em;
+  color: #BBBBBB;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap');
+code {
+  background-color: #2D2D2D;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'Oxygen Mono', monospace;
+}
+
+pre {
+  background-color: #2D2D2D;
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto;
+}
