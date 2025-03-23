@@ -5,6 +5,11 @@
     <article>
       <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
       <div class="post-info">{{ article.locale_date }}</div>
+      {% if article.image %}
+      <div class="article-image">
+        <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+      </div>
+      {% endif %}
       {{ article.content }}
     </article>
   {% endfor %}

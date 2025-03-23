@@ -5,6 +5,7 @@ Tags: technology, cloud computing, software development
 Slug: something-changed-tech-industry
 Author: Jim Gumbley
 Summary: The tech industry has shifted from custom builds to piecing together existing components - it's all just plugging Legos now.
+Image: images/legos.webp
 
 ## It's all just plugging Legos now
 

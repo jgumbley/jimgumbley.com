@@ -5,6 +5,7 @@ Tags: virtual reality, gaming, resident evil, horror
 Slug: resident-evil-vr-terrifying
 Author: Jim Gumbley
 Summary: Experiencing Resident Evil in VR brings horror gaming to a whole new level of terror.
+Image: images/virtuality.webp
 
 ## First contact with VR
 

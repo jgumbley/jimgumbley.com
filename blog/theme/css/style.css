@@ -64,3 +64,14 @@ footer {
   text-align: center;
   color: #BBBBBB;
 }
+
+.article-image {
+  margin: 1em 0;
+}
+
+.article-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
