@@ -1,0 +1,30 @@
+body {
+  font-family: 'Oxygen Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 1em;
+  color: #333;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+article {
+  margin-bottom: 2em;
+}
+
+.post-info {
+  margin-bottom: 1em;
+  font-size: 0.9em;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap');

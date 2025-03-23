@@ -10,7 +10,7 @@ define success
 	tput sgr0;
 endef
 
-.PHONY: preview clean_log venv clean clean-output build serve serve-dev publish
+.PHONY: preview clean html
 
 # Website preview
 preview:
@@ -18,14 +18,14 @@ preview:
 	$(call success)
 
 # Blog targets
-SRCDIR=$(CURDIR)/blogsrc
-OUTPUTDIR=$(CURDIR)/blog
+SRCDIR=./blogsrc
+OUTPUTDIR=./blog
 CONFFILE=$(SRCDIR)/pelicanconf.py
 PUBLISHCONF=$(SRCDIR)/publishconf.py
 
 venv:
-	python3 -m venv $(SRCDIR)/venv
-	. $(SRCDIR)/venv/bin/activate && \
+	python3 -m venv venv
+	. venv/bin/activate && \
 	pip install -r $(SRCDIR)/requirements.txt
 	$(call success)
 
@@ -34,18 +34,11 @@ cleanblog:
 	mkdir blog/
 	$(call success)
 
-clean:
-	rm -rf $(SRCDIR)/venv
+clean: cleanblog
+	rm -rf venv
 	$(call success)
 
-build: venv
-	. $(SRCDIR)/venv/bin/activate && \
-	cd $(SRCDIR) && \
-	pelican content -o $(OUTPUTDIR) -s $(CONFFILE)
-	$(call success)
-
-publish: cleanblog venv
-	. $(SRCDIR)/venv/bin/activate && \
-	cd $(SRCDIR) && \
-	pelican content -o $(OUTPUTDIR) -s $(PUBLISHCONF)
+html: cleanblog venv
+	. venv/bin/activate && \
+	pelican $(SRCDIR)/content -o $(OUTPUTDIR) -s $(CONFFILE)
 	$(call success)

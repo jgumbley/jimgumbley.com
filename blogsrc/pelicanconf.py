@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = 'Jim Gumbley'
-SITENAME = 'Jim Gumbley Blog'
+SITENAME = 'Jim Gumbley'
 SITEURL = ''
 
 PATH = 'content'
@@ -12,27 +12,35 @@ TIMEZONE = 'Europe/London'
 
 DEFAULT_LANG = 'en'
 
-# Feed generation is usually not desired when developing
+# Feed generation is disabled
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (('Pelican', 'https://getpelican.com/'),
-         ('Python.org', 'https://www.python.org/'),
-         ('Jinja2', 'https://palletsprojects.com/p/jinja/'),
-         ('You can modify those links in your config file', '#'),)
+# No blogroll or social links
+LINKS = ()
+SOCIAL = ()
 
-# Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+# Disable pagination
+DEFAULT_PAGINATION = False
 
-DEFAULT_PAGINATION = 10
+# Use relative URLs
+RELATIVE_URLS = True
 
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
-
-# Use Markdown as the default format
+# Use Markdown
 MARKUP = ('md',)
+
+# Use our minimal theme
+THEME = 'themes/minimal'
+
+# Disable unnecessary pages
+DIRECT_TEMPLATES = ['index']
+AUTHOR_SAVE_AS = ''
+AUTHORS_SAVE_AS = ''
+CATEGORY_SAVE_AS = ''
+CATEGORIES_SAVE_AS = ''
+TAG_SAVE_AS = ''
+TAGS_SAVE_AS = ''
+ARCHIVES_SAVE_AS = ''

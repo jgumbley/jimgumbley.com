@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
