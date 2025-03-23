@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = 'Jim Gumbley'
-SITENAME = 'sentence fragments'
+SITENAME = 'fragmented sentences'
 SITEURL = ''
 
 PATH = 'content'
