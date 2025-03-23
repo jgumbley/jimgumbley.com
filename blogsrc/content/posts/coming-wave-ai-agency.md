@@ -17,6 +17,7 @@ While theoretical debates about AGI timelines continue, a more immediate securit
 ## The Implementation Gap
 
 This rollout reveals concerning patterns across sectors:
+
 * Reduced human oversight in critical decision pathways
 * Deployment in environments with complex threat models
 * Access provisioning to sensitive infrastructure and data
