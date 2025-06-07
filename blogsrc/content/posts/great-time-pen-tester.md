@@ -5,7 +5,7 @@ Tags: penetration testing, cybersecurity
 Slug: great-time-pen-tester
 Author: Jim Gumbley
 Summary: Exploring how penetration testing has evolved alongside modern software development practices, and why AI-assisted red teaming might be the future of security validation.
-Image: images/wall_street.jpg
+Image: images/960px-Wall_Street_by_Paul_Strand,_1915.jpeg
 
 I've been involved with penetration testing for years, and I've watched it evolve alongside the broader transformation of software development practices. While pen testing remains a valuable security practice, its role and effectiveness have been significantly challenged by the shift toward continuous delivery, cloud-native architectures, and agile development methodologies.
 
