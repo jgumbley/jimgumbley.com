@@ -29,7 +29,7 @@ Organizations have generally responded by applying pen testing selectively - bef
 
 By 2025, rather than simply stretching traditional pen testing to cover modern development practices, the security industry has developed several complementary approaches that better align with continuous delivery workflows.
 
-Developer-focused vulnerability scanning tools like Snyk provide immediate, actionable security feedback within CI/CD pipelines. Infrastructure security platforms like Wiz offer continuous assessment of cloud configurations and runtime environments. The shift-left security movement has brought threat modeling directly into development teams, while deeper integration of advanced detection has developed runtime monitoring, anomaly detection, and threat hunting to compare developer activities against established baselines.
+Developer-focused vulnerability scanning tools like [Snyk](https://snyk.io/) provide immediate, actionable security feedback within CI/CD pipelines. Infrastructure security platforms like [Wiz](https://www.wiz.io/) offer continuous assessment of cloud configurations and runtime environments. The shift-left security movement has brought [threat modeling](https://martinfowler.com/articles/agile-threat-modelling.html) directly into development teams, while deeper integration of advanced detection has developed runtime monitoring, anomaly detection, and threat hunting to compare developer activities against established baselines.
 
 ## The AI Turning Point of 2025?
 
@@ -45,7 +45,7 @@ This isn't just professional satisfaction - it's the manifestation of deep creat
 
 ## The Future of Security Discovery
 
-Where do we go from here? What I anticipate is AI-assisted red teaming that could fundamentally change how we validate security controls. Red teaming differs from traditional penetration testing by simulating realistic adversary behavior to test an organization's entire defensive capability - not just finding vulnerabilities, but evaluating how well people, processes, and technology respond to actual attack scenarios.
+Where do we go from here? What I anticipate is AI-assisted [red teaming](https://csrc.nist.gov/glossary/term/red_team) that could fundamentally change how we validate security controls. Red teaming differs from traditional penetration testing by simulating realistic adversary behavior to test an organization's entire defensive capability - not just finding vulnerabilities, but evaluating how well people, processes, and technology respond to actual attack scenarios.
 
 This longer lifecycle, higher context approach solves the impedance mismatch introduced by high velocity software delivery. For auditors and compliance, this should shift focus from vulnerability counts to defensive effectiveness metrics: detection speed, response quality, and organizational resilience under realistic attack conditions.
 
