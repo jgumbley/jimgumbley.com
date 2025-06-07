@@ -2,6 +2,16 @@
 
 {% block title %}{{ article.title }}{% endblock %}
 
+{% block og_title %}{{ article.title }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_url %}{{ SITEURL }}/{{ article.url }}{% endblock %}
+{% block og_description %}<meta property="og:description" content="{% if article.summary %}{{ article.summary|striptags }}{% else %}{{ article.content|striptags|truncate(160) }}{% endif %}" />{% endblock %}
+{% if article.image %}{% block og_image %}<meta property="og:image" content="{{ SITEURL }}/{{ article.image }}" />{% endblock %}{% endif %}
+
+{% block twitter_title %}{{ article.title }}{% endblock %}
+{% block twitter_description %}<meta name="twitter:description" content="{% if article.summary %}{{ article.summary|striptags }}{% else %}{{ article.content|striptags|truncate(160) }}{% endif %}" />{% endblock %}
+{% if article.image %}{% block twitter_image %}<meta name="twitter:image" content="{{ SITEURL }}/{{ article.image }}" />{% endblock %}{% endif %}
+
 {% block content %}
 <article>
   <h2>{{ article.title }}</h2>

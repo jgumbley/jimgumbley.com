@@ -4,6 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}{{ SITENAME }} - Jim Gumbley's needless blog{% endblock title %}</title>
+  
+  <!-- Open Graph meta tags for social media previews -->
+  <meta property="og:title" content="{% block og_title %}{{ SITENAME }} - Jim Gumbley's needless blog{% endblock og_title %}" />
+  <meta property="og:type" content="{% block og_type %}website{% endblock og_type %}" />
+  <meta property="og:url" content="{% block og_url %}{{ SITEURL }}{% endblock og_url %}" />
+  {% block og_description %}<meta property="og:description" content="Jim Gumbley's technology blog covering security, AI, and software development" />{% endblock og_description %}
+  {% block og_image %}{% endblock og_image %}
+  <meta property="og:site_name" content="Jim Gumbley" />
+  
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="{% block twitter_title %}{{ SITENAME }} - Jim Gumbley's needless blog{% endblock twitter_title %}" />
+  {% block twitter_description %}<meta name="twitter:description" content="Jim Gumbley's technology blog covering security, AI, and software development" />{% endblock twitter_description %}
+  {% block twitter_image %}{% endblock twitter_image %}
+  
   <link rel="icon" type="image/png" href="{{ SITEURL }}/favicon.png" />
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" />
 </head>
