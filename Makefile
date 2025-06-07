@@ -13,7 +13,7 @@ endef
 .PHONY: preview clean html
 
 # Website preview
-preview:
+preview: html html html html
 	python3 -m http.server
 	$(call success)
 

@@ -1,68 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;0,700;1,400&display=swap');
 
 body {
-  font-family: 'Oxygen Mono', monospace;
-  font-size: 16px;
-  line-height: 1.5;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.6;
   max-width: 850px;
   width: 90%;
   margin: 0 auto;
   padding: 1em;
-  color: #E6E6E6;
-  background-color: #1E1E1E;
+  color: #2F2F2F;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(107, 142, 35, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(184, 115, 51, 0.3) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(139, 69, 19, 0.1) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(107, 142, 35, 0.1) 25%, transparent 25%),
+    linear-gradient(90deg, rgba(184, 115, 51, 0.1) 25%, transparent 25%),
+    #1E1E1E;
+  background-size: 120px 120px, 80px 80px, 100px 100px, 30px 30px, 30px 30px, 40px 40px;
+  background-position: 0 0, 40px 40px, 80px 20px, 0 0, 15px 15px, 20px 10px;
 }
 
 a {
-  color: #9CDCFE;
+  color: #8B4513;
   text-decoration: none;
-  border-bottom: 1px solid #9CDCFE;
+  border-bottom: 1px solid #8B4513;
   transition: color 0.2s, border-color 0.2s;
 }
 
 a:hover {
-  color: #CE9178;
-  border-bottom-color: #CE9178;
+  color: #B87333;
+  border-bottom-color: #B87333;
+}
+
+header h1 {
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #D2B48C;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 0.5em;
+  font-size: 2.5em;
+  line-height: 1.2;
+}
+
+header h1 a {
+  color: inherit;
+  border: none;
+  text-decoration: none;
+}
+
+header h1 a:hover {
+  color: #F4A460;
+  border: none;
 }
 
 h1, h2, h3 {
   font-weight: normal;
-  color: #E06C75;
+  color: #6B4423;
+  font-family: Georgia, serif;
 }
 
 article {
   margin-bottom: 2em;
-  padding: 1em;
-  background-color: #252526;
-  border-radius: 4px;
+  padding: 2em;
+  background-color: #FEFEFE;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-left: 4px solid #D2B48C;
 }
 
 .post-info {
   margin-bottom: 1em;
   font-size: 0.9em;
-  color: #BBBBBB;
+  color: #8B7355;
+  font-style: italic;
 }
 
 code {
-  background-color: #2D2D2D;
+  background-color: #F5F5DC;
+  color: #654321;
   padding: 0.2em 0.4em;
   border-radius: 3px;
-  font-family: 'Oxygen Mono', monospace;
+  font-family: 'Courier New', monospace;
+  border: 1px solid #D2B48C;
 }
 
 pre {
-  background-color: #2D2D2D;
+  background-color: #F5F5DC;
+  color: #654321;
   padding: 1em;
   border-radius: 4px;
   overflow-x: auto;
+  border: 1px solid #D2B48C;
 }
 
 footer {
   margin-top: 2em;
   padding-top: 1em;
-  border-top: 1px solid #333;
+  border-top: 1px solid #D2B48C;
   font-size: 0.9em;
   text-align: center;
-  color: #BBBBBB;
+  color: #8B7355;
 }
 
 .article-image {
