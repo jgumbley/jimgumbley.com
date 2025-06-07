@@ -7,7 +7,7 @@ Author: Jim Gumbley
 Summary: Exploring how penetration testing has evolved alongside modern software development practices, and why AI-assisted red teaming might be the future of security validation.
 Image: images/960px-Wall_Street_by_Paul_Strand,_1915.jpeg
 
-I've been involved with penetration testing for years, and I've watched it evolve alongside the broader transformation of software development practices. While pen testing remains a valuable security practice, its role and effectiveness have been significantly challenged by the shift toward continuous delivery, cloud-native architectures, and agile development methodologies.
+I've been involved with penetration testing for years, and I've watched it evolve alongside the broader transformation of software development practices. While pen testing remains a valuable security practice, its role and effectiveness have been significantly challenged by the shift toward continuous delivery, cloud-native architectures, and agile development methodologies. But with AI capabilities reaching new heights in 2025 and red teaming approaches gaining momentum, we may be approaching a fundamental shift in how security testing operates.
 
 ## The Traditional Model and Its Strengths
 
