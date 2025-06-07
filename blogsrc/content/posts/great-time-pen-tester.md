@@ -29,7 +29,7 @@ Organizations have generally responded by applying pen testing selectively - bef
 
 By 2025, rather than simply stretching traditional pen testing to cover modern development practices, the security industry has developed several complementary approaches that better align with continuous delivery workflows.
 
-Developer-focused vulnerability scanning tools like Snyk provide immediate, actionable security feedback within CI/CD pipelines. Infrastructure security platforms like Wiz offer continuous assessment of cloud configurations and runtime environments. The shift-left security movement has brought threat modeling directly into development teams, while shift-right practices focus on production security through runtime monitoring, anomaly detection, and AI-assisted detection systems that compare developer activities against established baselines.
+Developer-focused vulnerability scanning tools like Snyk provide immediate, actionable security feedback within CI/CD pipelines. Infrastructure security platforms like Wiz offer continuous assessment of cloud configurations and runtime environments. The shift-left security movement has brought threat modeling directly into development teams, while deeper integration of advanced detection has developed runtime monitoring, anomaly detection, and threat hunting to compare developer activities against established baselines.
 
 ## The AI Turning Point of 2025?
 
@@ -47,12 +47,8 @@ This isn't just professional satisfaction - it's the manifestation of deep creat
 
 Where do we go from here? What I anticipate is AI-assisted red teaming that could fundamentally change how we validate security controls. Red teaming differs from traditional penetration testing by simulating realistic adversary behavior to test an organization's entire defensive capability - not just finding vulnerabilities, but evaluating how well people, processes, and technology respond to actual attack scenarios.
 
-This longer lifecycle, higher context approach solves the impedance mismatch introduced by high velocity software delivery. Automated, increasingly AI supported, relatively straightforward checks can run at the point of change - integrated directly into CI/CD pipelines to catch obvious vulnerabilities and smells with immediate feedback that matches development velocity. Meanwhile, high-context, high-insight human-driven red team exercises can operate independently of the development cycle.
+This longer lifecycle, higher context approach solves the impedance mismatch introduced by high velocity software delivery. For auditors and compliance, this should shift focus from vulnerability counts to defensive effectiveness metrics: detection speed, response quality, and organizational resilience under realistic attack conditions.
 
-AI agents will only help maintain persistent campaigns, automatically adapt tactics based on defensive responses, and automate the routine technical donkeywork of setting up the infrastructure and payloads of a red team framework.
-
-For auditors and compliance, this could shift focus from vulnerability counts to defensive effectiveness metrics: detection speed, response quality, and organizational resilience under realistic attack conditions.
-
-This decoupling allows each approach to operate at its natural cadence and leverage its strengths. The human element remains essential for campaign strategy, creative attack development, and business context interpretation, while AI could handle systematic execution and adaptation.
+Automated, increasingly AI supported, relatively straightforward checks can run at the point of change - integrated directly into CI/CD pipelines to catch obvious vulnerabilities and smells with immediate feedback that matches development velocity. Meanwhile, high-context, high-insight human-driven red team exercises can operate independently of the development cycle. This decoupling allows each approach to operate at its natural cadence and leverage its strengths. The human element remains essential for campaign strategy, creative attack development, and business context interpretation, while AI could handle systematic execution and adaptation.
 
 I don't know for certain what the next steps in security testing will look like, but these extrapolations seem worthy of consideration. Combined with growing threats fueled in part by adversarial adoption of AI, it seems like a great time to be a pen tester! 
