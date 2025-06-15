@@ -12,8 +12,9 @@ TIMEZONE = 'Europe/London'
 
 DEFAULT_LANG = 'en'
 
-# Feed generation is disabled
-FEED_ALL_ATOM = None
+# Feed generation settings
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+FEED_ALL_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
