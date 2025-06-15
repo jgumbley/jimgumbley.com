@@ -37,11 +37,13 @@ The shift has been revealing. When I play Talking Heads' [*Stop Making Sense*](h
 
 Finding that compilation of all UB40's 1980s singles in a record store brought genuine discovery back into my life. My friend's DJ set from Sheffield uni in 2003, preserved as an MP3, represents the kind of personal musical history no streaming service can replicate.
 
+I'd been streaming Spotify through my PS5, where every track gets up-scaled into Dolby Atmos. On paper that sounds like an upgrade, but the result felt thin—extra reverb, smeared bass, no real punch. The moment I switched to Stereo Direct and played the same album from my plain old CD player, the mix snapped back to life: crisp cymbals, tight low-end, space between instruments. Drop the needle on a vinyl copy and the improvement is even more obvious—warmth, depth, and a sense of being in the room with the music. That A/B test told me convenience was costing me something real.
+
 I've moved to [foobar2000](https://www.foobar2000.org/) on my phone syncing with my NAS library. The £16.99 I used to hand over to Spotify now travels a different route. A couple of weeks ago, over a pint with my old colleague [James Green](https://bsky.app/profile/jfgreen.bsky.social), I was grumbling about subscription bloat when he said, "Why not give that money to artists directly on Bandcamp Friday?" The idea stuck. Every first Friday of the month I pick up two new releases—records I actually own—paid for by the cash that once vanished into a Premium Duo fee.
 
 ## What I've Gained
 
-The pros are clear: better sound through my hi-fi, actual ownership of music, and intentional discovery through Malvern's second-hand shops[^1]. Music through the PS5-to-receiver path sounded flat; the same CD or vinyl through direct stereo sounded alive. Yes, I hear adverts when accessing some content now, and maintaining my own library requires effort. But these are acceptable trade-offs for regaining control.
+The pros are clear: better sound through my hi-fi, actual ownership of music, and intentional discovery through Malvern's second-hand shops[^1]. Yes, I hear adverts when accessing some content now, and maintaining my own library requires effort. But these are acceptable trade-offs for regaining control.
 
 This isn't a call for everyone to abandon Spotify - it's simply a reminder to evaluate whether services still earn their fees. If you're experiencing algorithm fatigue, simpler tools or physical formats might rekindle your connection with music.
 
