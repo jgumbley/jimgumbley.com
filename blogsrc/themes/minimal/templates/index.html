@@ -1,5 +1,33 @@
 {% extends "base.html" %}
 
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "{{ SITENAME }}",
+  "description": "Jim Gumbley's technology blog covering security, AI, and software development",
+  "url": "{{ SITEURL }}/",
+  "author": {
+    "@type": "Person",
+    "name": "Jim Gumbley",
+    "url": "https://www.jimgumbley.com"
+  },
+  "blogPost": [
+    {% for article in articles_page.object_list %}
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ article.title }}",
+      "url": "{{ SITEURL }}/{{ article.url }}",
+      "datePublished": "{{ article.date.strftime('%Y-%m-%d') }}"{% if article.image %},
+      "image": "{{ SITEURL }}/{{ article.image }}"{% endif %}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock structured_data %}
+
 {% block content %}
   {% for article in articles_page.object_list %}
     <article>

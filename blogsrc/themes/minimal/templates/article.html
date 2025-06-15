@@ -15,6 +15,35 @@
 {% if article.image %}{% block twitter_image %}<meta name="twitter:image" content="{{ SITEURL }}/{{ article.image }}" />{% endblock %}{% endif %}
 {% if article.image %}<meta name="twitter:card" content="summary_large_image" />{% endif %}
 
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ article.title }}",
+  "url": "{{ SITEURL }}/{{ article.url }}",
+  "datePublished": "{{ article.date.strftime('%Y-%m-%d') }}",
+  {% if article.modified %}"dateModified": "{{ article.modified.strftime('%Y-%m-%d') }}",{% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "Jim Gumbley",
+    "url": "https://www.jimgumbley.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Jim Gumbley",
+    "url": "https://www.jimgumbley.com"
+  },
+  {% if article.image %}"image": "{{ SITEURL }}/{{ article.image }}",{% endif %}
+  "description": "{% if article.summary %}{{ article.summary|striptags }}{% else %}{{ article.content|striptags|truncate(160) }}{% endif %}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ SITEURL }}/{{ article.url }}"
+  }
+}
+</script>
+{% endblock structured_data %}
+
 {% block content %}
 <article>
   <h1>{{ article.title }}</h1>
