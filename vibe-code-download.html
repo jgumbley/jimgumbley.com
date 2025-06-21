@@ -236,55 +236,81 @@ const PROXY = 'https://corsproxy.io/?';
       htmlUrl: o.getAttribute('htmlUrl') || o.getAttribute('xmlUrl')
     }));
 
-    // Clear loading card and create 6 cards (5 feeds + 1 magic)
+    // Clear loading card
     grid.innerHTML = '';
     
-    // Take first 5 feeds for cards 1-5
-    const selectedFeeds = feeds.slice(0, 5);
+    // Fetch all posts from all feeds
+    const allPosts = [];
+    const feedPromises = feeds.map(async (feed) => {
+      try {
+        const response = await fetch(PROXY + feed.xmlUrl);
+        const xml = await response.text();
+        const doc = new DOMParser().parseFromString(xml, 'text/xml');
+        const item = doc.querySelector('item, entry');
+        
+        if (item) {
+          const title = item.querySelector('title')?.textContent?.trim() || 'Untitled post';
+          const link = item.querySelector('link')?.textContent || 
+                      item.querySelector('link')?.getAttribute('href') || 
+                      feed.htmlUrl;
+          
+          // Get publication date
+          const pubDate = item.querySelector('pubDate, published')?.textContent;
+          let date = new Date(0); // Default to epoch if no date
+          if (pubDate) {
+            try {
+              date = new Date(pubDate);
+            } catch (e) {}
+          }
+          
+          return {
+            title,
+            link,
+            date,
+            feedTitle: feed.title,
+            hostname: new URL(feed.xmlUrl).hostname,
+            feedUrl: feed.xmlUrl
+          };
+        }
+      } catch (e) {
+        return null;
+      }
+    });
     
-    selectedFeeds.forEach((feed, index) => {
+    // Wait for all feeds to load
+    const posts = (await Promise.all(feedPromises)).filter(post => post !== null);
+    
+    // Sort by date (most recent first)
+    posts.sort((a, b) => b.date - a.date);
+    
+    // Filter to ensure no more than one post per source and take top 5
+    const seenSources = new Set();
+    const selectedPosts = posts.filter(post => {
+      if (seenSources.has(post.feedUrl)) {
+        return false;
+      }
+      seenSources.add(post.feedUrl);
+      return true;
+    }).slice(0, 5);
+    
+    // Create cards for selected posts
+    selectedPosts.forEach((post) => {
       const card = document.createElement('div');
       card.className = 'card';
-      card.innerHTML = `
-        <div class="post-title loading">Loading latest post...</div>
-        <div class="feed-source">${feed.title}</div>
-        <div class="feed-meta">${new URL(feed.xmlUrl).hostname}</div>
-      `;
-      grid.appendChild(card);
       
-      // Fetch latest post
-      fetch(PROXY + feed.xmlUrl)
-        .then(r => r.text())
-        .then(xml => {
-          const doc = new DOMParser().parseFromString(xml, 'text/xml');
-          const item = doc.querySelector('item, entry');
-          if (item) {
-            const title = item.querySelector('title')?.textContent?.trim() || 'Untitled post';
-            const link = item.querySelector('link')?.textContent || 
-                        item.querySelector('link')?.getAttribute('href') || 
-                        feed.htmlUrl;
-            
-            // Try to get publication date
-            const pubDate = item.querySelector('pubDate, published')?.textContent;
-            let dateStr = '';
-            if (pubDate) {
-              try {
-                const date = new Date(pubDate);
-                dateStr = ` • ${date.toLocaleDateString()}`;
-              } catch (e) {}
-            }
-            
-            // Make entire card clickable
-            card.onclick = () => window.open(link, '_blank');
-            card.querySelector('.post-title').textContent = title;
-            card.querySelector('.feed-meta').textContent = `${new URL(feed.xmlUrl).hostname}${dateStr}`;
-          } else {
-            card.querySelector('.post-title').textContent = 'No recent posts found';
-          }
-        })
-        .catch(() => {
-          card.querySelector('.post-title').textContent = 'Could not load latest post';
-        });
+      let dateStr = '';
+      if (post.date.getTime() > 0) {
+        dateStr = ` • ${post.date.toLocaleDateString()}`;
+      }
+      
+      card.innerHTML = `
+        <div class="post-title">${post.title}</div>
+        <div class="feed-source">${post.feedTitle}</div>
+        <div class="feed-meta">${post.hostname}${dateStr}</div>
+      `;
+      
+      card.onclick = () => window.open(post.link, '_blank');
+      grid.appendChild(card);
     });
 
     // Add magic 8 ball card as 6th card

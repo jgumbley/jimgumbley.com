@@ -8,6 +8,7 @@
 	<outline text="Vibe Coding Download" title="Vibe Coding Download">
 		<outline text="AINews" title="AINews" description="" type="rss" version="RSS" htmlUrl="https://news.smol.ai/" xmlUrl="https://news.smol.ai/rss.xml"/>
 		<outline text="Armin Ronacher's Thoughts and Writings" title="Armin Ronacher's Thoughts and Writings" description="" type="rss" version="RSS" htmlUrl="" xmlUrl="https://lucumr.pocoo.org/feed.atom"/>
+		<outline text="Martin Fowler" title="Martin Fowler" description="" type="rss" version="RSS" htmlUrl="" xmlUrl="https://www.martinfowler.com/feed.atom"/>
 		<outline text="Simon Willison's Weblog" title="Simon Willison's Weblog" description="" type="rss" version="RSS" htmlUrl="http://simonwillison.net/" xmlUrl="https://simonwillison.net/atom/everything/"/>
 		<outline text="Sourcegraph Blog" title="Sourcegraph Blog" description="" type="rss" version="RSS" htmlUrl="https://webflow.sourcegraph.com/" xmlUrl="https://sourcegraph.com/blog/rss.xml"/>
 		<outline text="The Fly Blog" title="The Fly Blog" description="" type="rss" version="RSS" htmlUrl="" xmlUrl="https://fly.io/blog/feed.xml"/>
