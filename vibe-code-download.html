@@ -342,7 +342,7 @@ const PROXY = 'https://corsproxy.io/?';
     magicCard.innerHTML = `
       <div class="post-title">🎲 Surprise Me</div>
       <div class="feed-source">Dive into something unexpected</div>
-      <div class="feed-meta">Random pick from our entire archive</div>
+      <div class="feed-meta">Random pick from the last year</div>
     `;
     
     magicCard.onclick = async () => {
@@ -358,13 +358,15 @@ const PROXY = 'https://corsproxy.io/?';
         // Get all items/entries from the feed
         const allItems = [...doc.querySelectorAll('item, entry')];
         
-        // Filter items from 2025
-        const items2025 = allItems.filter(item => {
+        // Filter items from the last year
+        const itemsFromLastYear = allItems.filter(item => {
           const pubDate = item.querySelector('pubDate, published')?.textContent;
           if (pubDate) {
             try {
               const date = new Date(pubDate);
-              return date.getFullYear() === 2025;
+              const oneYearAgo = new Date();
+              oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+              return date >= oneYearAgo;
             } catch (e) {
               return false;
             }
@@ -372,8 +374,7 @@ const PROXY = 'https://corsproxy.io/?';
           return false;
         });
         
-        // If we have 2025 items, pick random from those, otherwise fallback to all items
-        const itemsToChooseFrom = items2025.length > 0 ? items2025 : allItems;
+        const itemsToChooseFrom = itemsFromLastYear.length > 0 ? itemsFromLastYear : allItems;
         
         if (itemsToChooseFrom.length > 0) {
           const randomItem = itemsToChooseFrom[Math.floor(Math.random() * itemsToChooseFrom.length)];
