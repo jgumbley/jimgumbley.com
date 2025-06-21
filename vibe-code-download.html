@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>🏄🏾‍♀️➰Vibe➰Code➰Download➰🔮 - Jim Gumbley</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A curated reading list with fresh links to signal over noise.">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+* { box-sizing: border-box; }
+body { 
+  font-family: 'JetBrains Mono', 'Monaco', 'Consolas', 'SF Mono', monospace; 
+  background: #1a1a1a; 
+  color: #e0e0e0; 
+  line-height: 1.6; 
+  margin: 0; 
+  padding: 2rem;
+}
+
+h1 { 
+  text-align: center; 
+  font-size: 3.5rem; 
+  margin-bottom: 1rem; 
+  color: #8b5cf6;
+}
+
+.intro {
+  text-align: center;
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 600px;
+}
+
+.card {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(107, 70, 193, 0.4);
+  border-color: #8b5cf6;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6b46c1, #8b5cf6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.post-title {
+  font-size: 2.5rem !important;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: #fff;
+  text-decoration: none;
+  flex-grow: 1;
+  text-align: center !important;
+}
+
+.post-title:hover {
+  color: #8b5cf6;
+}
+
+.feed-source {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.feed-meta {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.loading {
+  color: #888;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.magic-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.magic-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3);
+}
+
+.magic-card::before {
+  display: none;
+}
+
+.magic-card .post-title {
+  color: white;
+  font-size: 2.5rem !important;
+  text-align: center !important;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.magic-card .feed-source {
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.magic-card .feed-meta {
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #444;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.footer a {
+  color: #8b5cf6;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.back-link {
+  margin-top: 2rem;
+}
+
+.back-link a {
+  color: #8b5cf6;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  .grid { 
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    min-height: auto;
+  }
+  h1 { font-size: 2.5rem; }
+  .card { padding: 1.5rem; }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .grid { 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+</style>
+</head>
+<body>
+
+<h1>🏄🏾‍♀️➰Vibe➰Code➰Download➰🔮</h1>
+
+<div class="intro">
+  Fresh content on AI, cybersecurity, and software craftsmanship. Bookmark and return anytime for the latest from top sources.
+</div>
+
+<div class="grid" id="feed-grid">
+  <div class="card loading">
+    <div class="post-title">Loading latest posts...</div>
+    <div class="feed-source"></div>
+    <div class="feed-meta"></div>
+  </div>
+</div>
+
+<div class="footer">
+  RSS users: import these sources via <a href="vibe-coding-download.opml">OPML feed</a>
+  <div class="back-link">
+    <a href="index.html">← Back to main page</a>
+  </div>
+</div>
+
+<script>
+const OPML_PATH = 'vibe-coding-download.opml';
+const PROXY = 'https://corsproxy.io/?';
+
+(async () => {
+  const grid = document.getElementById('feed-grid');
+
+  try {
+    const opmlText = await (await fetch(OPML_PATH)).text();
+    const opmlDoc = new DOMParser().parseFromString(opmlText, 'text/xml');
+    const outlines = opmlDoc.querySelectorAll('outline[xmlUrl]');
+    const feeds = [...outlines].map(o => ({
+      title: o.getAttribute('title') || o.getAttribute('text') || o.getAttribute('xmlUrl'),
+      xmlUrl: o.getAttribute('xmlUrl'),
+      htmlUrl: o.getAttribute('htmlUrl') || o.getAttribute('xmlUrl')
+    }));
+
+    // Clear loading card and create 6 cards (5 feeds + 1 magic)
+    grid.innerHTML = '';
+    
+    // Take first 5 feeds for cards 1-5
+    const selectedFeeds = feeds.slice(0, 5);
+    
+    selectedFeeds.forEach((feed, index) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="post-title loading">Loading latest post...</div>
+        <div class="feed-source">${feed.title}</div>
+        <div class="feed-meta">${new URL(feed.xmlUrl).hostname}</div>
+      `;
+      grid.appendChild(card);
+      
+      // Fetch latest post
+      fetch(PROXY + feed.xmlUrl)
+        .then(r => r.text())
+        .then(xml => {
+          const doc = new DOMParser().parseFromString(xml, 'text/xml');
+          const item = doc.querySelector('item, entry');
+          if (item) {
+            const title = item.querySelector('title')?.textContent?.trim() || 'Untitled post';
+            const link = item.querySelector('link')?.textContent || 
+                        item.querySelector('link')?.getAttribute('href') || 
+                        feed.htmlUrl;
+            
+            // Try to get publication date
+            const pubDate = item.querySelector('pubDate, published')?.textContent;
+            let dateStr = '';
+            if (pubDate) {
+              try {
+                const date = new Date(pubDate);
+                dateStr = ` • ${date.toLocaleDateString()}`;
+              } catch (e) {}
+            }
+            
+            // Make entire card clickable
+            card.onclick = () => window.open(link, '_blank');
+            card.querySelector('.post-title').textContent = title;
+            card.querySelector('.feed-meta').textContent = `${new URL(feed.xmlUrl).hostname}${dateStr}`;
+          } else {
+            card.querySelector('.post-title').textContent = 'No recent posts found';
+          }
+        })
+        .catch(() => {
+          card.querySelector('.post-title').textContent = 'Could not load latest post';
+        });
+    });
+
+    // Add magic 8 ball card as 6th card
+    const magicCard = document.createElement('div');
+    magicCard.className = 'card magic-card';
+    magicCard.innerHTML = `
+      <div class="post-title">🎲 Surprise Me</div>
+      <div class="feed-source">Dive into something unexpected</div>
+      <div class="feed-meta">Random pick from our entire archive</div>
+    `;
+    
+    magicCard.onclick = async () => {
+      try {
+        // Pick random feed
+        const randomFeed = feeds[Math.floor(Math.random() * feeds.length)];
+        
+        // Fetch the entire feed
+        const response = await fetch(PROXY + randomFeed.xmlUrl);
+        const xml = await response.text();
+        const doc = new DOMParser().parseFromString(xml, 'text/xml');
+        
+        // Get all items/entries from the feed
+        const allItems = [...doc.querySelectorAll('item, entry')];
+        
+        // Filter items from 2025
+        const items2025 = allItems.filter(item => {
+          const pubDate = item.querySelector('pubDate, published')?.textContent;
+          if (pubDate) {
+            try {
+              const date = new Date(pubDate);
+              return date.getFullYear() === 2025;
+            } catch (e) {
+              return false;
+            }
+          }
+          return false;
+        });
+        
+        // If we have 2025 items, pick random from those, otherwise fallback to all items
+        const itemsToChooseFrom = items2025.length > 0 ? items2025 : allItems;
+        
+        if (itemsToChooseFrom.length > 0) {
+          const randomItem = itemsToChooseFrom[Math.floor(Math.random() * itemsToChooseFrom.length)];
+          const link = randomItem.querySelector('link')?.textContent || 
+                      randomItem.querySelector('link')?.getAttribute('href') || 
+                      randomFeed.htmlUrl;
+          window.open(link, '_blank');
+        } else {
+          // Fallback to feed homepage if no items found
+          window.open(randomFeed.htmlUrl, '_blank');
+        }
+      } catch (e) {
+        // Error fallback - just go to a random feed homepage
+        const randomFeed = feeds[Math.floor(Math.random() * feeds.length)];
+        window.open(randomFeed.htmlUrl, '_blank');
+      }
+    };
+    
+    grid.appendChild(magicCard);
+
+  } catch (e) {
+    grid.innerHTML = '<div class="card"><div class="post-title">Could not load feed list.</div></div>';
+    console.error(e);
+  }
+})();
+</script>
+
+</body>
+</html>
