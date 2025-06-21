@@ -263,27 +263,23 @@ const PROXY = 'https://corsproxy.io/?';
     grid.innerHTML = '';
     
     // Fetch all posts from all feeds
-    const allPosts = [];
     const feedPromises = feeds.map(async (feed) => {
       try {
         const response = await fetch(PROXY + feed.xmlUrl);
         const xml = await response.text();
         const doc = new DOMParser().parseFromString(xml, 'text/xml');
-        const item = doc.querySelector('item, entry');
+        const items = [...doc.querySelectorAll('item, entry')];
         
-        if (item) {
+        return items.map(item => {
           const title = item.querySelector('title')?.textContent?.trim() || 'Untitled post';
           const link = item.querySelector('link')?.textContent || 
                       item.querySelector('link')?.getAttribute('href') || 
                       feed.htmlUrl;
           
-          // Get publication date
           const pubDate = item.querySelector('pubDate, published')?.textContent;
-          let date = new Date(0); // Default to epoch if no date
+          let date = new Date(0);
           if (pubDate) {
-            try {
-              date = new Date(pubDate);
-            } catch (e) {}
+            try { date = new Date(pubDate); } catch (e) {}
           }
           
           return {
@@ -294,14 +290,14 @@ const PROXY = 'https://corsproxy.io/?';
             hostname: new URL(feed.xmlUrl).hostname,
             feedUrl: feed.xmlUrl
           };
-        }
+        });
       } catch (e) {
-        return null;
+        return []; // Return empty array on error
       }
     });
     
-    // Wait for all feeds to load
-    const posts = (await Promise.all(feedPromises)).filter(post => post !== null);
+    // Wait for all feeds to load and flatten the array of posts
+    const posts = (await Promise.all(feedPromises)).flat();
     
     // Sort by date (most recent first)
     posts.sort((a, b) => b.date - a.date);
