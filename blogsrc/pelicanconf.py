@@ -3,7 +3,7 @@
 
 AUTHOR = 'Jim Gumbley'
 SITENAME = 'fragmented sentences'
-SITEURL = 'https://jimgumbley.com/blog'
+SITEURL = 'https://www.jimgumbley.com/blog'
 
 PATH = 'content'
 OUTPUT_PATH = '../blog'  # Output directly to the blog directory
