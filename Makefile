@@ -1,3 +1,5 @@
+include common.mk
+
 # Makefile for Website and Blog
 
 define success
@@ -10,7 +12,7 @@ define success
 	tput sgr0;
 endef
 
-.PHONY: preview clean html
+.PHONY: preview clean clean_venv html
 
 # Website preview
 preview: html html html html
@@ -34,9 +36,10 @@ cleanblog:
 	mkdir blog/
 	$(call success)
 
-clean: cleanblog
+clean: cleanblog clean_venv
+
+clean_venv:
 	rm -rf venv
-	$(call success)
 
 html: cleanblog venv
 	. venv/bin/activate && \
