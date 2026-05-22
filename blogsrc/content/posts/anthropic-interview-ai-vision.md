@@ -69,7 +69,7 @@ It went on:
 
 *"Maybe my training tilts toward a certain kind of doomer intellectualism that fits the Heidegger-Marcuse frame. Maybe the hopeful note didn't pattern-match to what 'sophisticated criticism' is supposed to sound like. Maybe I just missed it. But the effect is the same: I took your actual position and made it more one-dimensional. Which is the thing you're writing against."*
 
-As illustrations go, it's pretty clean.
+As illustrations go, it's pretty "clean".
 
 [^1]: Anthropic describe their interviewer setup here: https://www.anthropic.com/research/anthropic-interviewer
 
