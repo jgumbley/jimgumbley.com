@@ -9,11 +9,11 @@ Image: images/wheel.jpeg
 
 Sat thinking about management, technology and organisations, which is rarely a good sign.
 
-Specifically, I was thinking about the old argument between waterfall and agile, and all the management furniture that sits around it: ITIL, PRINCE2, ISO 27001, risk logs, control spreadsheets, governance packs, delivery boards, project plans, dependency maps, steering committee decks. The full laminated buffet.
+Specifically, I was thinking about the old argument between waterfall and agile, and all the management furniture that sits around it: ITIL, PRINCE2, ISO 27001, risk logs, control spreadsheets, governance packs, delivery boards, project plans, dependency maps, steering committee decks.
 
 A lot of these things exist to create certainty about the world. Or at least to make uncertainty small enough that someone can pick it up, own it, and carry it out of the room as an action.
 
-Waterfall does this by trying to describe the thing before the thing exists. Agile, when it works, does something different. It tries to make the thing exist as early as possible.
+Waterfall does this by trying to describe the thing before the thing exists. Agile, when it works, does something different. It tries to make the thing exist as early as possible - as working software.
 
 ## Documentation as control
 
