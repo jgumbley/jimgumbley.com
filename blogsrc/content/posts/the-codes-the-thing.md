@@ -7,7 +7,7 @@ Author: Jim Gumbley
 Summary: Why working software, not documentation or ceremony, is the artifact that actually reduces uncertainty — and why that lesson still holds in the AI era.
 Image: images/wheel.jpeg
 
-Sat thinking about management, which is rarely a good sign.
+Sat thinking about management, technology and organisations, which is rarely a good sign.
 
 Specifically, I was thinking about the old argument between waterfall and agile, and all the management furniture that sits around it: ITIL, PRINCE2, ISO 27001, risk logs, control spreadsheets, governance packs, delivery boards, project plans, dependency maps, steering committee decks. The full laminated buffet.
 
@@ -107,4 +107,6 @@ The better lesson was that working things are better than imagined things, and t
 
 Conversation matters because it helps shape the next increment of the working thing. Documentation matters because it helps the working thing travel beyond the original team. Governance matters because organisations need memory, accountability, and control.
 
-But none of them should become a substitute for a system that works. What did you leave behind that works, and what are you going to build on it next?
+But none of them should become a substitute for a system that works. 
+
+What did you leave behind that works, and what are you going to build on it next?
