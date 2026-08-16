@@ -1,37 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 56">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 76">
   <defs>
     <linearGradient id="gold-rule" x1="0" x2="1">
       <stop stop-color="#c49e48" stop-opacity="0"/>
-      <stop offset=".22" stop-color="#d3bb7b"/>
-      <stop offset=".5" stop-color="#b88735"/>
-      <stop offset=".78" stop-color="#d3bb7b"/>
-      <stop offset="1" stop-color="#c49e48" stop-opacity="0"/>
+      <stop offset=".45" stop-color="#d3bb7b"/>
+      <stop offset="1" stop-color="#b88735"/>
     </linearGradient>
-    <radialGradient id="blush-bloom" cx="38%" cy="32%" r="72%">
-      <stop stop-color="#ffe1ca"/>
-      <stop offset=".56" stop-color="#f6b58c"/>
-      <stop offset="1" stop-color="#cf6b3c"/>
+    <radialGradient id="peach-bloom" cx="36%" cy="30%" r="74%">
+      <stop stop-color="#ffe8d4"/>
+      <stop offset=".48" stop-color="#f6b58c"/>
+      <stop offset="1" stop-color="#c85d31"/>
     </radialGradient>
+    <radialGradient id="cream-bloom" cx="38%" cy="32%" r="70%">
+      <stop stop-color="#fff9ec"/>
+      <stop offset=".58" stop-color="#f4d8b9"/>
+      <stop offset="1" stop-color="#d98c58"/>
+    </radialGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#c6c9b3"/>
+      <stop offset=".55" stop-color="#92997d"/>
+      <stop offset="1" stop-color="#59634a"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-30%" y="-40%" width="160%" height="190%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
+      <feOffset in="blur" dy="1.5" result="offset"/>
+      <feColorMatrix in="offset" type="matrix" values="0 0 0 0 .36 0 0 0 0 .18 0 0 0 0 .08 0 0 0 .23 0" result="shadow"/>
+      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <g id="rose">
+      <ellipse rx="16" ry="9" transform="rotate(0) translate(0 -8)" fill="#fbd0b2"/>
+      <ellipse rx="16" ry="9" transform="rotate(72) translate(0 -8)" fill="#e98c59"/>
+      <ellipse rx="16" ry="9" transform="rotate(144) translate(0 -8)" fill="#f7bd98"/>
+      <ellipse rx="16" ry="9" transform="rotate(216) translate(0 -8)" fill="#d76e3c"/>
+      <ellipse rx="16" ry="9" transform="rotate(288) translate(0 -8)" fill="#f8c7a7"/>
+      <path d="M-10 0C-7-11 8-14 14-5C17 6 6 14-5 11C-13 9-15 4-10 0Z" fill="url(#peach-bloom)"/>
+      <path d="M-4 2C-1-5 7-6 8 0C7 7 0 8-4 2Z" fill="#a94d27" opacity=".84"/>
+    </g>
+    <g id="cream-rose">
+      <ellipse rx="13" ry="7.5" transform="rotate(8) translate(0 -7)" fill="#fff5df"/>
+      <ellipse rx="13" ry="7.5" transform="rotate(80) translate(0 -7)" fill="#edc69e"/>
+      <ellipse rx="13" ry="7.5" transform="rotate(152) translate(0 -7)" fill="#fff0d7"/>
+      <ellipse rx="13" ry="7.5" transform="rotate(224) translate(0 -7)" fill="#e8b98f"/>
+      <ellipse rx="13" ry="7.5" transform="rotate(296) translate(0 -7)" fill="#f9dfc0"/>
+      <circle r="8" fill="url(#cream-bloom)"/>
+      <path d="M-3 1C-1-4 5-4 5 1C3 6-2 5-3 1Z" fill="#b6532b" opacity=".72"/>
+    </g>
+    <g id="leaf-shape">
+      <path d="M0 0C10-17 30-17 40-7C31 7 13 11 0 0Z" fill="url(#leaf)"/>
+      <path d="M3 0L34-7" fill="none" stroke="#676e53" stroke-width=".9" opacity=".62"/>
+    </g>
   </defs>
-  <path d="M8 28H240M360 28H592" fill="none" stroke="url(#gold-rule)" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
-  <path d="M222 28C249 28 263 14 280 21C289 25 292 28 300 28C308 28 311 25 320 21C337 14 351 28 378 28" fill="none" stroke="#b88735" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
-  <path d="M276 24C260 8 242 10 233 17C243 31 259 36 276 24Z" fill="#a9ac90"/>
-  <path d="M267 22C256 16 247 15 238 17" fill="none" stroke="#676e53" stroke-width=".9" opacity=".65"/>
-  <path d="M324 32C340 48 358 46 367 39C357 25 341 20 324 32Z" fill="#7d8566"/>
-  <path d="M333 34C344 40 353 41 362 39" fill="none" stroke="#59634a" stroke-width=".9" opacity=".65"/>
-  <path d="M285 23C279 13 269 10 263 12C265 22 274 27 285 23Z" fill="#c1c4ad"/>
-  <path d="M315 33C321 43 331 46 337 44C335 34 326 29 315 33Z" fill="#9da48a"/>
-  <g transform="translate(300 28)">
-    <ellipse rx="10" ry="6" transform="rotate(0) translate(0 -6)" fill="#fbd0b2"/>
-    <ellipse rx="10" ry="6" transform="rotate(72) translate(0 -6)" fill="#e99564"/>
-    <ellipse rx="10" ry="6" transform="rotate(144) translate(0 -6)" fill="#f7bd98"/>
-    <ellipse rx="10" ry="6" transform="rotate(216) translate(0 -6)" fill="#d97947"/>
-    <ellipse rx="10" ry="6" transform="rotate(288) translate(0 -6)" fill="#f8c7a7"/>
-    <circle r="6.5" fill="url(#blush-bloom)"/>
-    <path d="M-3 1C-1-4 5-4 5 1C3 6-2 5-3 1Z" fill="#a94d27" opacity=".82"/>
+
+  <style>
+    .divider-bloom {
+      animation: bloom-breathe 8s ease-in-out infinite alternate;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    @keyframes bloom-breathe {
+      from { transform: scale(.98); opacity: .92; }
+      to { transform: scale(1.025); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .divider-bloom { animation: none; }
+    }
+  </style>
+
+  <path d="M8 38H168M432 38H592" fill="none" stroke="url(#gold-rule)" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
+  <path d="M150 38C196 38 211 19 246 29C267 35 281 40 300 38C319 40 333 35 354 29C389 19 404 38 450 38" fill="none" stroke="#b88735" stroke-width="1.35" vector-effect="non-scaling-stroke"/>
+  <path d="M172 38C194 51 212 52 234 45M428 38C406 51 388 52 366 45" fill="none" stroke="#676e53" stroke-width="1.4" opacity=".72"/>
+
+  <use href="#leaf-shape" transform="translate(184 40) rotate(20) scale(.82)"/>
+  <use href="#leaf-shape" transform="translate(220 43) rotate(-148) scale(.72)"/>
+  <use href="#leaf-shape" transform="translate(253 34) rotate(158) scale(.66)"/>
+  <use href="#leaf-shape" transform="translate(416 40) rotate(160) scale(.82)"/>
+  <use href="#leaf-shape" transform="translate(380 43) rotate(-32) scale(.72)"/>
+  <use href="#leaf-shape" transform="translate(347 34) rotate(22) scale(.66)"/>
+
+  <g class="divider-bloom">
+    <use href="#cream-rose" transform="translate(244 37) rotate(-10) scale(.83)"/>
+    <use href="#rose" transform="translate(276 39) rotate(8) scale(.72)"/>
+    <use href="#rose" transform="translate(300 37) rotate(-5) scale(1.12)"/>
+    <use href="#cream-rose" transform="translate(327 38) rotate(12) scale(.9)"/>
+    <use href="#rose" transform="translate(355 38) rotate(-12) scale(.67)"/>
   </g>
-  <circle cx="250" cy="20" r="2.2" fill="#db6126" opacity=".72"/>
-  <circle cx="350" cy="36" r="2.2" fill="#e99c64" opacity=".8"/>
-  <path d="M296 10L300 6L304 10L300 14Z" fill="none" stroke="#c49e48" stroke-width="1"/>
-  <path d="M296 46L300 42L304 46L300 50Z" fill="none" stroke="#c49e48" stroke-width="1"/>
+
+  <path d="M292 11L300 3L308 11L300 19Z" fill="none" stroke="#c49e48" stroke-width="1.1"/>
+  <path d="M292 65L300 57L308 65L300 73Z" fill="none" stroke="#c49e48" stroke-width="1.1"/>
+  <circle cx="205" cy="28" r="3" fill="#db6126"/>
+  <circle cx="218" cy="24" r="2.2" fill="#e99c64"/>
+  <circle cx="395" cy="28" r="3" fill="#db6126"/>
+  <circle cx="382" cy="24" r="2.2" fill="#e99c64"/>
 </svg>

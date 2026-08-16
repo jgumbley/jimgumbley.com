@@ -89,13 +89,13 @@
               "href": "https://leighandbransfordhall.co.uk/"
             },
             {
-              "label": "Directions to the hall",
-              "href": "https://www.google.com/maps/search/?api=1&query=Leigh+and+Bransford+Memorial+Hall%2C+Sherridge+Road%2C+Leigh+Sinton+WR13+5DE"
+              "label": "View the journey on Google Maps",
+              "href": "https://www.google.com/maps/dir/?api=1&origin=Great+Malvern+Priory%2C+Church+Street%2C+Malvern+WR14+2AY&destination=Leigh+and+Bransford+Memorial+Hall%2C+Sherridge+Road%2C+Leigh+Sinton+WR13+5DE&travelmode=driving"
             }
           ]
         }
       ],
-      "note": "Please allow time for travel and parking between venues. Guests should travel directly to the hall after the service."
+      "note": "The journey from the Priory to the reception is approximately 4.5 miles (7.3 km) and takes around 15 minutes by car. Please allow additional time for parking and travel directly to the hall after the service."
     },
     {
       "id": "travel-stay",

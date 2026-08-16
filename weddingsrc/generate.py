@@ -308,7 +308,7 @@ def render_links(items: list[dict] | None) -> str:
 
 
 def divider() -> str:
-    return '    <img class="botanical-divider" src="./assets/botanical-divider.svg" alt="" aria-hidden="true">'
+    return '    <img class="botanical-divider" src="./assets/botanical-divider.svg?v=20260816b" alt="" aria-hidden="true">'
 
 
 def render_hero(section: dict) -> str:

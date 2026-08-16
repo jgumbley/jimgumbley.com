@@ -111,8 +111,8 @@ main,
   inset: var(--frame-inset);
   border: var(--rule);
   pointer-events: none;
-  background: url("./assets/botanical-frame.svg") center / 100% 100% no-repeat;
-  filter: drop-shadow(0 0.2rem 0.28rem rgb(92 58 29 / 8%));
+  background: url("./assets/botanical-frame.svg?v=20260816b") center / 100% 100% no-repeat;
+  filter: drop-shadow(0 0.25rem 0.38rem rgb(92 58 29 / 13%));
 }
 
 .ornate-panel::after {
@@ -120,7 +120,10 @@ main,
   position: absolute;
   z-index: 0;
   inset: calc(var(--frame-inset) + 0.45rem);
-  border: 1px solid rgb(211 187 123 / 48%);
+  border: 1px solid rgb(196 158 72 / 62%);
+  background:
+    linear-gradient(90deg, transparent, var(--colour-gold), transparent) top center / 8rem 1px no-repeat,
+    linear-gradient(90deg, transparent, var(--colour-gold), transparent) bottom center / 8rem 1px no-repeat;
   box-shadow:
     inset 0 0 0 3px rgb(248 244 232 / 44%),
     inset 0 0 0 4px rgb(196 158 72 / 20%);
@@ -141,7 +144,7 @@ main,
 
 .hero.ornate-panel::before,
 .closing.ornate-panel::before {
-  animation: botanical-breathe 14s ease-in-out infinite alternate;
+  animation: botanical-breathe 12s ease-in-out infinite alternate;
   transform-origin: center;
 }
 
@@ -151,8 +154,32 @@ main,
 }
 
 .hero__content {
+  position: relative;
   max-width: 52rem;
-  padding-block: 2rem;
+  padding: 3rem clamp(0.5rem, 3vw, 2rem);
+}
+
+.hero__content::before,
+.hero__content::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: min(15rem, 58vw);
+  height: 0.7rem;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(circle, var(--colour-gold) 0 2px, transparent 2.5px) center / 0.7rem 0.7rem no-repeat,
+    linear-gradient(90deg, transparent, var(--colour-gold-light) 35%, transparent 35% 65%, var(--colour-gold-light) 65%, transparent) center / 100% 1px no-repeat;
+  opacity: 0.85;
+  animation: flourish-shimmer 8s ease-in-out infinite alternate;
+}
+
+.hero__content::before {
+  top: 0.7rem;
+}
+
+.hero__content::after {
+  bottom: 0.7rem;
 }
 
 .eyebrow,
@@ -191,10 +218,28 @@ h1 {
 }
 
 h2 {
+  position: relative;
   margin: 0;
   font-size: clamp(2rem, 5vw, 3.25rem);
   line-height: 1.12;
   text-align: center;
+}
+
+.site-section h2::before,
+.site-section h2::after {
+  content: "";
+  display: inline-block;
+  width: clamp(1.5rem, 5vw, 4rem);
+  height: 0.55rem;
+  margin-inline: clamp(0.4rem, 1.8vw, 1rem);
+  background:
+    radial-gradient(circle, var(--colour-gold) 0 2px, transparent 2.5px) right center / 0.55rem 0.55rem no-repeat,
+    linear-gradient(90deg, transparent, var(--colour-gold-light)) left center / calc(100% - 0.55rem) 1px no-repeat;
+  vertical-align: 0.2em;
+}
+
+.site-section h2::after {
+  transform: scaleX(-1);
 }
 
 h3 {
@@ -304,8 +349,8 @@ main:focus {
 
 .botanical-divider {
   display: block;
-  width: min(19rem, 72%);
-  height: 2rem;
+  width: min(23rem, 82%);
+  height: 2.5rem;
   margin: 1rem auto 2.25rem;
   filter: drop-shadow(0 0.15rem 0.18rem rgb(92 58 29 / 7%));
   animation: divider-drift 9s ease-in-out infinite alternate;
@@ -373,6 +418,7 @@ main:focus {
   border-top: var(--rule);
   border-bottom: var(--rule);
   color: var(--colour-ink);
+  background: linear-gradient(90deg, transparent, rgb(211 187 123 / 13%), transparent);
   font-style: italic;
 }
 
@@ -413,7 +459,9 @@ main:focus {
   border: var(--rule);
   border-radius: var(--small-radius);
   background:
-    linear-gradient(145deg, rgb(255 255 255 / 25%), transparent 45%),
+    radial-gradient(circle at 100% 0%, rgb(233 156 100 / 12%), transparent 8rem),
+    radial-gradient(circle at 0% 100%, rgb(169 172 144 / 12%), transparent 9rem),
+    linear-gradient(145deg, rgb(255 255 255 / 32%), transparent 45%),
     rgb(242 236 221 / 48%);
   box-shadow: 0 0.45rem 1.4rem rgb(92 58 29 / 3%);
   break-inside: avoid;
@@ -425,27 +473,49 @@ main:focus {
   position: absolute;
   z-index: -1;
   inset: 0.38rem;
-  border: 1px solid rgb(211 187 123 / 44%);
+  border: 1px solid rgb(211 187 123 / 58%);
   border-radius: calc(var(--small-radius) - 0.18rem);
+  background:
+    linear-gradient(var(--colour-gold), var(--colour-gold)) left top / 1.7rem 1px no-repeat,
+    linear-gradient(var(--colour-gold), var(--colour-gold)) left top / 1px 1.7rem no-repeat,
+    linear-gradient(var(--colour-gold), var(--colour-gold)) right top / 1.7rem 1px no-repeat,
+    linear-gradient(var(--colour-gold), var(--colour-gold)) right top / 1px 1.7rem no-repeat,
+    linear-gradient(var(--colour-gold), var(--colour-gold)) left bottom / 1.7rem 1px no-repeat,
+    linear-gradient(var(--colour-gold), var(--colour-gold)) left bottom / 1px 1.7rem no-repeat,
+    linear-gradient(var(--colour-gold), var(--colour-gold)) right bottom / 1.7rem 1px no-repeat,
+    linear-gradient(var(--colour-gold), var(--colour-gold)) right bottom / 1px 1.7rem no-repeat;
   pointer-events: none;
 }
 
 .detail-card::after {
-  content: "◆";
+  content: "❦";
   position: absolute;
-  top: -0.58rem;
+  top: -0.72rem;
   left: 50%;
   padding-inline: 0.55rem;
-  transform: translateX(-50%) scaleX(0.7);
+  transform: translateX(-50%);
   color: var(--colour-gold);
   background: var(--colour-paper);
-  font-size: 0.66rem;
+  font-size: 1rem;
   line-height: 1;
   pointer-events: none;
 }
 
 .detail-card p:last-child {
   margin-bottom: 0;
+}
+
+.detail-card h3::after {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 1px;
+  margin-top: 0.7rem;
+  background: linear-gradient(90deg, var(--colour-gold), transparent);
+}
+
+.venue-card h3::after {
+  width: 4rem;
 }
 
 .card-label {
@@ -488,15 +558,19 @@ address {
 
 .callout {
   max-width: 54rem;
+  border-inline: 1px solid rgb(196 158 72 / 36%);
   text-align: center;
+  box-shadow: inset 0 0 3rem rgb(196 158 72 / 5%);
 }
 
 .callout::before {
   content: "";
   position: absolute;
-  inset: clamp(2.1rem, 5vw, 4rem) 0;
-  border: 1px solid rgb(196 158 72 / 26%);
-  border-width: 1px 0;
+  inset: clamp(2.1rem, 5vw, 4rem) 0.55rem;
+  border: 1px solid rgb(196 158 72 / 40%);
+  background:
+    radial-gradient(circle at 0 0, rgb(233 156 100 / 13%), transparent 7rem),
+    radial-gradient(circle at 100% 100%, rgb(169 172 144 / 15%), transparent 8rem);
   pointer-events: none;
 }
 
@@ -579,13 +653,27 @@ address {
 
 @keyframes botanical-breathe {
   from {
-    opacity: 0.94;
-    transform: scale(0.9985);
+    opacity: 0.92;
+    transform: scale(0.997);
   }
 
   to {
     opacity: 1;
-    transform: scale(1.0015);
+    transform: scale(1.003);
+  }
+}
+
+@keyframes flourish-shimmer {
+  from {
+    filter: saturate(0.86);
+    opacity: 0.66;
+    transform: translateX(-50%) scaleX(0.96);
+  }
+
+  to {
+    filter: saturate(1.08);
+    opacity: 0.95;
+    transform: translateX(-50%) scaleX(1.02);
   }
 }
 
@@ -659,6 +747,11 @@ address {
 
   .site-section {
     padding-inline: 0.75rem;
+  }
+
+  .site-section h2::before,
+  .site-section h2::after {
+    margin-inline: 0.3rem;
   }
 
   .timeline li {
