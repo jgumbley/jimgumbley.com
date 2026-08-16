@@ -41,6 +41,7 @@ STATIC_FILES = (
 )
 CONTROLLED = ("index.html", "manifest.json", *STATIC_FILES)
 ID_PATTERN = re.compile(r"^[a-z][a-z0-9-]*$")
+DISPLAY_TIME_PATTERN = re.compile(r"^(?:[01]\d|2[0-3]):[0-5]\d$")
 HTML_LIKE = re.compile(r"<[^>]*>")
 TEMPLATE_MARKER = re.compile(r"{{[A-Z_]+}}")
 CONTROL_CHAR = re.compile(r"[\x00-\x1f\x7f]")
@@ -199,7 +200,9 @@ def validate_manifest(data: dict) -> None:
             for item_index, item_value in enumerate(items):
                 item_path = f"{path}.items[{item_index}]"
                 item = closed(item_value, item_path, {"time", "datetime", "text"})
-                text(item["time"], f"{item_path}.time")
+                display_time = text(item["time"], f"{item_path}.time")
+                if not DISPLAY_TIME_PATTERN.fullmatch(display_time):
+                    fail(f"{item_path}.time", "must use 24-hour HH:MM format")
                 text(item["text"], f"{item_path}.text")
                 try:
                     instant = datetime.fromisoformat(text(item["datetime"], f"{item_path}.datetime"))
@@ -209,6 +212,8 @@ def validate_manifest(data: dict) -> None:
                     fail(f"{item_path}.datetime", "must include a timezone offset")
                 if instant.astimezone(timezone).date() != event_date:
                     fail(f"{item_path}.datetime", "falls outside the event's local calendar date")
+                if instant.astimezone(timezone).strftime("%H:%M") != display_time:
+                    fail(f"{item_path}.time", "must match the local time in datetime")
                 if previous_instant is not None and instant <= previous_instant:
                     fail(f"{item_path}.datetime", "timeline items must be in chronological order")
                 previous_instant = instant

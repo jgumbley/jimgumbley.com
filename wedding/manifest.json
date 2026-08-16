@@ -48,9 +48,9 @@
         { "time": "11:15", "datetime": "2026-09-26T11:15:00+01:00", "text": "Guests arrive at Great Malvern Priory" },
         { "time": "11:40", "datetime": "2026-09-26T11:40:00+01:00", "text": "Guests to be seated" },
         { "time": "12:00", "datetime": "2026-09-26T12:00:00+01:00", "text": "Wedding ceremony begins" },
-        { "time": "1:00", "datetime": "2026-09-26T13:00:00+01:00", "text": "Ceremony concludes" },
-        { "time": "2:00", "datetime": "2026-09-26T14:00:00+01:00", "text": "Welcome drinks and canapés at the hall" },
-        { "time": "3:00", "datetime": "2026-09-26T15:00:00+01:00", "text": "Reception and buffet begin" },
+        { "time": "13:00", "datetime": "2026-09-26T13:00:00+01:00", "text": "Ceremony concludes" },
+        { "time": "14:00", "datetime": "2026-09-26T14:00:00+01:00", "text": "Welcome drinks and canapés at the hall" },
+        { "time": "15:00", "datetime": "2026-09-26T15:00:00+01:00", "text": "Reception and buffet begin" },
         { "time": "22:30", "datetime": "2026-09-26T22:30:00+01:00", "text": "Carriages" }
       ],
       "note": "Please make your way directly to the reception venue after the service."
@@ -66,7 +66,7 @@
           "label": "Ceremony",
           "name": "Great Malvern Priory",
           "addressLines": ["Church Street", "Malvern", "Worcestershire", "WR14 2AY"],
-          "timingNote": "Guests seated by 11:40 am",
+          "timingNote": "Guests seated by 11:40",
           "links": [
             {
               "label": "Priory website",
@@ -82,7 +82,7 @@
           "label": "Reception",
           "name": "Leigh & Bransford Memorial Hall",
           "addressLines": ["Sherridge Road", "Leigh Sinton", "Worcestershire", "WR13 5DE"],
-          "timingNote": "Drinks from 2:00 pm",
+          "timingNote": "Drinks from 14:00",
           "links": [
             {
               "label": "Reception hall website",
@@ -149,13 +149,13 @@
         {
           "heading": "Taxis",
           "body": [
-            "Uber is available in Malvern and generally works well, although pick-up times can be longer than in larger towns and cities.",
-            "For the end of the evening, we recommend booking ahead for the 10:30 pm carriages. Local firms include Smith Taxis, Access Taxis and BNS Travel."
+            "Uber generally works well in Malvern, although pick-up times can be longer than in larger towns and cities.",
+            "If you would rather use a local firm for the 22:30 carriages, options include Smith Taxis, Access Taxis and BNS Travel."
           ],
           "links": [
-            { "label": "Smith Taxis", "href": "https://www.smithtaxis.co.uk/" },
-            { "label": "Access Taxis", "href": "https://malverntaxis.com/" },
-            { "label": "BNS Travel", "href": "https://www.bnstravel.co.uk/" },
+            { "label": "Smith Taxis contact details", "href": "https://www.google.com/search?q=Smith+Taxis+Malvern" },
+            { "label": "Access Taxis contact details", "href": "https://www.google.com/search?q=Access+Taxis+Malvern" },
+            { "label": "BNS Travel contact details", "href": "https://www.google.com/search?q=BNS+Travel+Malvern" },
             { "label": "Uber in Malvern", "href": "https://www.uber.com/global/en/r/cities/malvern-eng-gb/" }
           ]
         },
@@ -192,7 +192,7 @@
         {
           "heading": "Food",
           "body": [
-            "Welcome drinks and canapés will be served from 2:00 pm. A buffet meal will begin from 3:00 pm.",
+            "Welcome drinks and canapés will be served from 14:00. A buffet meal will begin from 15:00.",
             "The buffet will feature traditional Lebanese and Moroccan cuisine, with vegetarian options available.",
             "Some dishes may contain nuts, and we cannot guarantee that any dish will be completely free from nuts or traces of nuts. Guests with nut allergies should take particular care."
           ]
@@ -200,7 +200,7 @@
         {
           "heading": "Drinks",
           "body": [
-            "Soft drinks, wine, beer and cider will be available. If you would prefer something else, or have a favourite drink, please feel free to bring your own."
+            "Soft drinks, tea and coffee, as well as wine, local beer and local cider, will be available. If you have a favourite alcoholic drink that is not listed, please feel free to bring your own."
           ]
         },
         { "heading": "Seating", "body": ["Seating at the reception will be informal. Please choose any available table, except tables marked Reserved"] },

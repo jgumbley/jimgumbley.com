@@ -109,7 +109,7 @@
       "additionalProperties": false,
       "required": ["time", "datetime", "text"],
       "properties": {
-        "time": { "$ref": "#/$defs/nonEmptyString" },
+        "time": { "type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" },
         "datetime": { "type": "string", "format": "date-time" },
         "text": { "$ref": "#/$defs/nonEmptyString" }
       }
