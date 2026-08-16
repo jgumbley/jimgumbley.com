@@ -43,12 +43,7 @@ body {
   padding: max(0.75rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right)) max(0.75rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
   overflow-x: hidden;
   color: var(--colour-body);
-  background:
-    radial-gradient(circle at 50% 0%, rgb(255 255 255 / 52%), transparent 34rem),
-    radial-gradient(circle at 12% 26%, rgb(196 158 72 / 4%), transparent 21rem),
-    radial-gradient(circle at 88% 72%, rgb(169 172 144 / 5%), transparent 24rem),
-    repeating-linear-gradient(93deg, transparent 0 3px, rgb(92 58 29 / 0.008) 3px 4px),
-    var(--colour-paper);
+  background: var(--colour-paper);
   font-family: var(--font-body);
   font-size: 1.125rem;
   line-height: 1.65;
@@ -121,9 +116,6 @@ main,
   z-index: 0;
   inset: calc(var(--frame-inset) + 0.45rem);
   border: 1px solid rgb(196 158 72 / 62%);
-  background:
-    linear-gradient(90deg, transparent, var(--colour-gold), transparent) top center / 8rem 1px no-repeat,
-    linear-gradient(90deg, transparent, var(--colour-gold), transparent) bottom center / 8rem 1px no-repeat;
   box-shadow:
     inset 0 0 0 3px rgb(248 244 232 / 44%),
     inset 0 0 0 4px rgb(196 158 72 / 20%);
@@ -165,11 +157,9 @@ main,
   position: absolute;
   left: 50%;
   width: min(15rem, 58vw);
-  height: 0.7rem;
+  height: 1px;
   transform: translateX(-50%);
-  background:
-    radial-gradient(circle, var(--colour-gold) 0 2px, transparent 2.5px) center / 0.7rem 0.7rem no-repeat,
-    linear-gradient(90deg, transparent, var(--colour-gold-light) 35%, transparent 35% 65%, var(--colour-gold-light) 65%, transparent) center / 100% 1px no-repeat;
+  background: var(--colour-gold-light);
   opacity: 0.85;
   animation: flourish-shimmer 8s ease-in-out infinite alternate;
 }
@@ -230,11 +220,9 @@ h2 {
   content: "";
   display: inline-block;
   width: clamp(1.5rem, 5vw, 4rem);
-  height: 0.55rem;
+  height: 1px;
   margin-inline: clamp(0.4rem, 1.8vw, 1rem);
-  background:
-    radial-gradient(circle, var(--colour-gold) 0 2px, transparent 2.5px) right center / 0.55rem 0.55rem no-repeat,
-    linear-gradient(90deg, transparent, var(--colour-gold-light)) left center / calc(100% - 0.55rem) 1px no-repeat;
+  background: var(--colour-gold-light);
   vertical-align: 0.2em;
 }
 
@@ -279,8 +267,8 @@ h3 {
   bottom: 0;
   left: clamp(1.5rem, 7vw, 5rem);
   height: 1px;
-  background:
-    linear-gradient(90deg, transparent, var(--colour-gold-light) 18%, var(--colour-gold) 50%, var(--colour-gold-light) 82%, transparent);
+  background: var(--colour-gold-light);
+  opacity: 0.72;
 }
 
 .page-nav ul {
@@ -384,7 +372,7 @@ main:focus {
   grid-column: 1 / -1;
   height: 1px;
   margin-inline: 2rem;
-  background: linear-gradient(90deg, transparent, var(--colour-gold-light), transparent);
+  background: rgb(211 187 123 / 55%);
 }
 
 .timeline li:last-child::after {
@@ -418,7 +406,7 @@ main:focus {
   border-top: var(--rule);
   border-bottom: var(--rule);
   color: var(--colour-ink);
-  background: linear-gradient(90deg, transparent, rgb(211 187 123 / 13%), transparent);
+  background: rgb(242 236 221 / 52%);
   font-style: italic;
 }
 
@@ -458,11 +446,7 @@ main:focus {
   padding: clamp(1.4rem, 3vw, 2rem);
   border: var(--rule);
   border-radius: var(--small-radius);
-  background:
-    radial-gradient(circle at 100% 0%, rgb(233 156 100 / 12%), transparent 8rem),
-    radial-gradient(circle at 0% 100%, rgb(169 172 144 / 12%), transparent 9rem),
-    linear-gradient(145deg, rgb(255 255 255 / 32%), transparent 45%),
-    rgb(242 236 221 / 48%);
+  background: rgb(242 236 221 / 58%);
   box-shadow: 0 0.45rem 1.4rem rgb(92 58 29 / 3%);
   break-inside: avoid;
   transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
@@ -475,15 +459,6 @@ main:focus {
   inset: 0.38rem;
   border: 1px solid rgb(211 187 123 / 58%);
   border-radius: calc(var(--small-radius) - 0.18rem);
-  background:
-    linear-gradient(var(--colour-gold), var(--colour-gold)) left top / 1.7rem 1px no-repeat,
-    linear-gradient(var(--colour-gold), var(--colour-gold)) left top / 1px 1.7rem no-repeat,
-    linear-gradient(var(--colour-gold), var(--colour-gold)) right top / 1.7rem 1px no-repeat,
-    linear-gradient(var(--colour-gold), var(--colour-gold)) right top / 1px 1.7rem no-repeat,
-    linear-gradient(var(--colour-gold), var(--colour-gold)) left bottom / 1.7rem 1px no-repeat,
-    linear-gradient(var(--colour-gold), var(--colour-gold)) left bottom / 1px 1.7rem no-repeat,
-    linear-gradient(var(--colour-gold), var(--colour-gold)) right bottom / 1.7rem 1px no-repeat,
-    linear-gradient(var(--colour-gold), var(--colour-gold)) right bottom / 1px 1.7rem no-repeat;
   pointer-events: none;
 }
 
@@ -511,7 +486,7 @@ main:focus {
   width: 2.75rem;
   height: 1px;
   margin-top: 0.7rem;
-  background: linear-gradient(90deg, var(--colour-gold), transparent);
+  background: var(--colour-gold);
 }
 
 .venue-card h3::after {
@@ -560,7 +535,6 @@ address {
   max-width: 54rem;
   border-inline: 1px solid rgb(196 158 72 / 36%);
   text-align: center;
-  box-shadow: inset 0 0 3rem rgb(196 158 72 / 5%);
 }
 
 .callout::before {
@@ -568,9 +542,6 @@ address {
   position: absolute;
   inset: clamp(2.1rem, 5vw, 4rem) 0.55rem;
   border: 1px solid rgb(196 158 72 / 40%);
-  background:
-    radial-gradient(circle at 0 0, rgb(233 156 100 / 13%), transparent 7rem),
-    radial-gradient(circle at 100% 100%, rgb(169 172 144 / 15%), transparent 8rem);
   pointer-events: none;
 }
 
@@ -579,11 +550,11 @@ address {
 }
 
 .callout--gift {
-  background: linear-gradient(90deg, transparent, rgb(211 187 123 / 10%), transparent);
+  background: rgb(211 187 123 / 8%);
 }
 
 .callout--photo {
-  background: linear-gradient(90deg, transparent, rgb(169 172 144 / 13%), transparent);
+  background: rgb(169 172 144 / 10%);
 }
 
 .callout__action {
