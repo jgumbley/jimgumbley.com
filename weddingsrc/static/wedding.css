@@ -549,14 +549,6 @@ address {
   max-width: 50rem;
 }
 
-.callout--gift {
-  background: rgb(211 187 123 / 8%);
-}
-
-.callout--photo {
-  background: rgb(169 172 144 / 10%);
-}
-
 .callout__action {
   margin-top: 2rem;
 }
@@ -677,6 +669,89 @@ address {
     border-color: var(--colour-gold-light);
     box-shadow: 0 0.7rem 1.8rem rgb(92 58 29 / 7%);
     transform: translateY(-2px);
+  }
+}
+
+@media (min-width: 45.0625rem) {
+  body {
+    font-size: 1.25rem;
+  }
+
+  .skip-link {
+    font-size: 0.9rem;
+  }
+
+  .site-section {
+    max-width: 100%;
+  }
+
+  .eyebrow,
+  .card-label,
+  .hero__venue span {
+    font-size: 0.88rem;
+  }
+
+  h1 {
+    font-size: clamp(3.25rem, 8vw, 6.5rem);
+  }
+
+  h2 {
+    font-size: clamp(2.35rem, 5vw, 3.75rem);
+  }
+
+  h3 {
+    font-size: 1.9rem;
+  }
+
+  .hero__date {
+    font-size: 1.9rem;
+  }
+
+  .hero__venue {
+    font-size: 1.2rem;
+  }
+
+  .page-nav a {
+    font-size: 0.85rem;
+  }
+
+  .timeline time {
+    font-size: 1.15rem;
+  }
+
+  .timeline span {
+    font-size: 1.3rem;
+  }
+
+  .venue-grid,
+  .card-grid,
+  .card-grid--4,
+  .card-grid--5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card-grid--5 > *,
+  .card-grid--5 > :nth-last-child(-n + 2) {
+    grid-column: auto;
+  }
+
+  .card-grid--5 > :last-child {
+    width: calc(50% - 0.5rem);
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .detail-links a {
+    font-size: 0.82rem;
+  }
+
+  .callout__action a,
+  .tagline {
+    font-size: 0.88rem;
+  }
+
+  .site-footer {
+    font-size: 0.8rem;
   }
 }
 

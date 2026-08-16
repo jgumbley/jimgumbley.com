@@ -118,7 +118,7 @@
           ]
         },
         {
-          "heading": "From London",
+          "heading": "Arriving by rail",
           "body": [
             "Great Western Railway (GWR) runs a good service from London Paddington to Great Malvern."
           ],
@@ -208,7 +208,13 @@
         {
           "heading": "Dress code",
           "body": [
-            "There is no particular dress code — please wear whatever makes you feel comfortable and ready to celebrate. It is a wedding, and the ceremony takes place at Great Malvern Priory, a Church of England church, so please bear the occasion and setting in mind."
+            "There is no particular dress code — please wear whatever makes you feel comfortable and ready to celebrate. It is a wedding, and the ceremony takes place at Great Malvern Priory, a beautiful Church of England church, so please bear the occasion and setting in mind."
+          ]
+        },
+        {
+          "heading": "Photography",
+          "body": [
+            "Visit the Photo Guestbook table during the reception, take an instant photo, add it to our scrapbook and leave us a message."
           ]
         }
       ]
@@ -226,19 +232,6 @@
         "If you are stuck for inspiration, we have also set up a gift list with The Wedding Shop."
       ],
       "link": { "label": "View our wedding gift list", "href": "https://www.weddingshop.com/buy/view/332579" }
-    },
-    {
-      "id": "photo-guestbook",
-      "type": "callout",
-      "variant": "photo",
-      "navLabel": "Photography",
-      "heading": "Photography",
-      "body": [
-        "We would love you to help us capture the day through your eyes!",
-        "During the reception, visit our Photo Guestbook table, take an instant photo of yourselves, or anything you would like for us to remember. Stick it into our wedding scrapbook and leave us a message, piece of advice or a memory.",
-        "Funny, beautiful, unexpected — we want them all. 🤍"
-      ],
-      "tagline": "Snap it • Stick it • Sign it"
     },
     {
       "id": "closing",
