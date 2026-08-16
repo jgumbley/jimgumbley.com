@@ -50,7 +50,8 @@
         { "time": "12:00", "datetime": "2026-09-26T12:00:00+01:00", "text": "Wedding ceremony begins" },
         { "time": "1:00", "datetime": "2026-09-26T13:00:00+01:00", "text": "Ceremony concludes" },
         { "time": "2:00", "datetime": "2026-09-26T14:00:00+01:00", "text": "Welcome drinks and canapés at the hall" },
-        { "time": "3:00", "datetime": "2026-09-26T15:00:00+01:00", "text": "Reception and buffet begin" }
+        { "time": "3:00", "datetime": "2026-09-26T15:00:00+01:00", "text": "Reception and buffet begin" },
+        { "time": "22:30", "datetime": "2026-09-26T22:30:00+01:00", "text": "Carriages" }
       ],
       "note": "Please make your way directly to the reception venue after the service."
     },
@@ -75,6 +76,35 @@
         }
       ],
       "note": "Please allow time for travel and parking between venues. Guests should travel directly to the hall after the service."
+    },
+    {
+      "id": "travel-stay",
+      "type": "cards",
+      "navLabel": "Travel & stay",
+      "heading": "Travel & staying over",
+      "intro": "Useful information for guests travelling to Malvern",
+      "items": [
+        {
+          "heading": "Parking",
+          "body": [
+            "The best parking for Great Malvern Priory is at Waitrose, where free parking is available for up to three hours.",
+            "The reception hall has its own car park with ample parking."
+          ]
+        },
+        {
+          "heading": "From London",
+          "body": [
+            "Great Western Railway (GWR) runs a good service from London Paddington to Great Malvern."
+          ]
+        },
+        {
+          "heading": "Staying overnight",
+          "body": [
+            "The Great Malvern Hotel is reasonably priced and within walking distance of Great Malvern Priory.",
+            "There are lots of nice places for breakfast in the town."
+          ]
+        }
+      ]
     },
     {
       "id": "reception",
