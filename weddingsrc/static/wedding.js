@@ -260,11 +260,17 @@ function sendBeeHome(journey) {
   }
   journey.homing = true;
   cancelCurrentFlight(journey);
-  const arrival = closingArrivalPoint();
+  const target = hiveEntrance();
+  const arrival = {
+    x: Math.min(
+      window.scrollX + window.innerWidth - 35,
+      Math.max(window.scrollX + 35, target.x - 55),
+    ),
+    y: window.scrollY - 35,
+  };
   journey.current = arrival;
   journey.bee.style.transform = translate(arrival);
   journey.bee.querySelector(".wedding-bee__direction").style.transform = "scaleX(1)";
-  const target = hiveEntrance();
   window.setTimeout(() => flyBee(journey, target, () => enterHive(journey, target)), 220);
 }
 
@@ -408,22 +414,6 @@ function flowerPoints(selector) {
         isFlower: true,
       };
     });
-}
-
-function closingArrivalPoint() {
-  const closingFlowers = flowerPoints(".closing .bee-flower")
-    .sort((first, second) => second.y - first.y || second.x - first.x);
-  const visible = closingFlowers
-    .filter((point) => (
-      point.viewportX > 18
-      && point.viewportX < window.innerWidth - 18
-      && point.viewportY > 18
-      && point.viewportY < window.innerHeight - 18
-    ));
-  return visible[0] || closingFlowers[0] || {
-    x: window.scrollX + window.innerWidth * 0.72,
-    y: window.scrollY + window.innerHeight * 0.32,
-  };
 }
 
 function currentBeePosition(bee) {
