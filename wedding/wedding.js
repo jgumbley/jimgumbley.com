@@ -3,6 +3,9 @@
 const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
 const MOTION_REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)");
 const BEE_CRUISING_SPEED = 0.165;
+const GROWTH_ANIMATIONS = new Set(["berry-ripen", "bud-rise", "flower-bloom", "leaf-unfurl", "stem-draw"]);
+let beeJourney = null;
+let closingGardenComplete = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   void growWeddingGarden();
@@ -45,10 +48,24 @@ function observeBotanicalGrowth() {
       }
       entry.target.classList.add("botanical-art--revealed");
       observer.unobserve(entry.target);
+      if (entry.target.closest(".closing")) {
+        window.requestAnimationFrame(() => waitForClosingGarden(entry.target));
+      }
     });
   }, { threshold: 0.01 });
 
   document.querySelectorAll(".botanical-art").forEach((artwork) => observer.observe(artwork));
+}
+
+async function waitForClosingGarden(artwork) {
+  const growth = artwork.getAnimations({ subtree: true }).filter(
+    (animation) => GROWTH_ANIMATIONS.has(animation.animationName),
+  );
+  await Promise.all(growth.map((animation) => animation.finished));
+  closingGardenComplete = true;
+  if (beeJourney) {
+    sendBeeHome(beeJourney);
+  }
 }
 
 async function fetchSvg(url) {
@@ -189,9 +206,10 @@ function launchBee() {
     </div>`;
   document.body.append(bee);
 
+  const heroBounds = document.querySelector(".hero").getBoundingClientRect();
   const start = {
-    x: window.scrollX + window.innerWidth + 55,
-    y: window.scrollY + Math.min(180, window.innerHeight * 0.28),
+    x: window.scrollX + heroBounds.right + 55,
+    y: window.scrollY + heroBounds.top + Math.min(180, heroBounds.height * 0.28),
   };
   bee.style.transform = translate(start);
   bee.classList.add("wedding-bee--visible");
@@ -203,19 +221,12 @@ function launchBee() {
     animation: null,
     directionAnimation: null,
     routeTimer: null,
-    scrollTimer: null,
     flightToken: 0,
-    following: false,
     homing: false,
     homed: false,
   };
-  journey.onScroll = () => {
-    window.clearTimeout(journey.scrollTimer);
-    journey.scrollTimer = window.setTimeout(() => respondToScroll(journey), 140);
-  };
-  window.addEventListener("scroll", journey.onScroll, { passive: true });
-
-  if (pageIsAtBottom()) {
+  beeJourney = journey;
+  if (closingGardenComplete) {
     sendBeeHome(journey);
   } else {
     routeBee(journey);
@@ -226,12 +237,8 @@ function routeBee(journey) {
   if (journey.homing || journey.homed) {
     return;
   }
-  if (pageIsAtBottom()) {
-    sendBeeHome(journey);
-    return;
-  }
 
-  const flowers = visibleFlowers();
+  const flowers = flowerPoints(".hero .bee-flower");
   if (flowers.length === 0) {
     scheduleRoute(journey, 500);
     return;
@@ -247,45 +254,18 @@ function routeBee(journey) {
   });
 }
 
-function respondToScroll(journey) {
-  if (journey.homing || journey.homed) {
-    return;
-  }
-  if (pageIsAtBottom()) {
-    sendBeeHome(journey);
-    return;
-  }
-  if (!beeIsInViewport(journey.bee)) {
-    catchUpBee(journey);
-  }
-}
-
-function catchUpBee(journey) {
-  journey.following = true;
-  const current = currentBeePosition(journey.bee);
-  const flowers = visibleFlowers();
-  const target = flowers.sort((first, second) => distance(current, first) - distance(current, second))[0] || {
-    x: window.scrollX + window.innerWidth * 0.72,
-    y: window.scrollY + window.innerHeight * 0.3,
-    isFlower: false,
-  };
-
-  flyBee(journey, target, () => {
-    journey.following = false;
-    if (target.isFlower) {
-      releasePollen(target);
-    }
-    scheduleRoute(journey, 1050);
-  });
-}
-
 function sendBeeHome(journey) {
   if (journey.homing || journey.homed) {
     return;
   }
   journey.homing = true;
+  cancelCurrentFlight(journey);
+  const arrival = closingArrivalPoint();
+  journey.current = arrival;
+  journey.bee.style.transform = translate(arrival);
+  journey.bee.querySelector(".wedding-bee__direction").style.transform = "scaleX(1)";
   const target = hiveEntrance();
-  flyBee(journey, target, () => enterHive(journey, target));
+  window.setTimeout(() => flyBee(journey, target, () => enterHive(journey, target)), 220);
 }
 
 function flyBee(journey, target, onArrival) {
@@ -401,8 +381,6 @@ function scheduleRoute(journey, delay) {
 function enterHive(journey, entrance) {
   journey.homed = true;
   window.clearTimeout(journey.routeTimer);
-  window.clearTimeout(journey.scrollTimer);
-  window.removeEventListener("scroll", journey.onScroll);
   journey.bee.classList.add("wedding-bee--entering-hive");
 
   const animation = journey.bee.animate([
@@ -417,8 +395,8 @@ function enterHive(journey, entrance) {
   animation.addEventListener("finish", () => journey.bee.remove(), { once: true });
 }
 
-function visibleFlowers() {
-  return [...document.querySelectorAll(".bee-flower")]
+function flowerPoints(selector) {
+  return [...document.querySelectorAll(selector)]
     .filter((flower) => flower.closest(".botanical-art--revealed"))
     .map((flower) => {
       const bounds = flower.getBoundingClientRect();
@@ -429,21 +407,23 @@ function visibleFlowers() {
         y: window.scrollY + bounds.top + bounds.height / 2,
         isFlower: true,
       };
-    })
+    });
+}
+
+function closingArrivalPoint() {
+  const closingFlowers = flowerPoints(".closing .bee-flower")
+    .sort((first, second) => second.y - first.y || second.x - first.x);
+  const visible = closingFlowers
     .filter((point) => (
       point.viewportX > 18
       && point.viewportX < window.innerWidth - 18
       && point.viewportY > 18
       && point.viewportY < window.innerHeight - 18
     ));
-}
-
-function beeIsInViewport(bee) {
-  const bounds = bee.getBoundingClientRect();
-  return bounds.right > 12
-    && bounds.left < window.innerWidth - 12
-    && bounds.bottom > 12
-    && bounds.top < window.innerHeight - 12;
+  return visible[0] || closingFlowers[0] || {
+    x: window.scrollX + window.innerWidth * 0.72,
+    y: window.scrollY + window.innerHeight * 0.32,
+  };
 }
 
 function currentBeePosition(bee) {
@@ -452,10 +432,6 @@ function currentBeePosition(bee) {
     x: window.scrollX + bounds.left + bounds.width / 2,
     y: window.scrollY + bounds.top + bounds.height / 2,
   };
-}
-
-function pageIsAtBottom() {
-  return window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
 }
 
 function hiveEntrance() {
