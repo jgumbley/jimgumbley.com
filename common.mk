@@ -38,8 +38,8 @@ define agent_pane
 	pane_label="$(1)"; \
 	repo_root="$(CURDIR)"; \
 	pane_height="$${AGENT_PANE_PERCENT:-45}"; \
-	cmd_display="$$(printf ' %q' $(2))"; \
-	cmd_display="$${cmd_display# }"; \
+	cmd_display="$$(printf '%s ' $(2))"; \
+	cmd_display="$${cmd_display% }"; \
 	pane_id="$$( \
 		tmux split-window -b -v -p "$$pane_height" -c "$$repo_root" -PF '#{pane_id}' \
 			bash -lc ' \
