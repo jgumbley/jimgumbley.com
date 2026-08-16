@@ -54,7 +54,13 @@ function observeBotanicalGrowth() {
     });
   }, { threshold: 0.01 });
 
-  document.querySelectorAll(".botanical-art").forEach((artwork) => observer.observe(artwork));
+  document.querySelectorAll(".botanical-art").forEach((artwork) => {
+    if (artwork.closest(".closing")) {
+      observer.observe(artwork);
+    } else {
+      artwork.classList.add("botanical-art--revealed");
+    }
+  });
 }
 
 async function waitForClosingGarden(artwork) {
