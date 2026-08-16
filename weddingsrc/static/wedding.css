@@ -145,6 +145,28 @@ main,
   animation: gilded-glow 10s ease-in-out infinite alternate;
 }
 
+.js .ornate-panel::before {
+  background-image: none;
+  animation: none;
+}
+
+.botanical-frame-stage {
+  position: absolute !important;
+  z-index: 0 !important;
+  inset: var(--frame-inset);
+  pointer-events: none;
+  filter: drop-shadow(0 0.25rem 0.38rem rgb(92 58 29 / 13%));
+}
+
+.botanical-art--frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform-origin: center;
+  animation: botanical-breathe-svg 12s ease-in-out 5.1s infinite alternate;
+}
+
 .hero__content {
   position: relative;
   max-width: 52rem;
@@ -342,6 +364,119 @@ main:focus {
   margin: 1rem auto 2.25rem;
   filter: drop-shadow(0 0.15rem 0.18rem rgb(92 58 29 / 7%));
   animation: divider-drift 9s ease-in-out infinite alternate;
+}
+
+.js img.botanical-divider {
+  opacity: 0;
+  animation: none;
+}
+
+.js svg.botanical-divider {
+  overflow: visible;
+  animation: divider-drift 9s ease-in-out 5.1s infinite alternate;
+}
+
+.botanical-outline,
+.botanical-stem {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: stem-draw 1.65s cubic-bezier(0.22, 0.72, 0.24, 1) both;
+}
+
+.botanical-outline {
+  animation-duration: 1.35s;
+}
+
+.botanical-stem {
+  animation-delay: var(--growth-delay);
+}
+
+.botanical-outline {
+  animation-delay: var(--growth-delay);
+}
+
+.botanical-growth-part {
+  opacity: 0;
+  transform: scale(0.02) rotate(-7deg);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: leaf-unfurl 0.9s cubic-bezier(0.18, 0.9, 0.24, 1.22) both;
+  animation-delay: var(--growth-delay);
+}
+
+.botanical-growth-part--berry {
+  animation-name: berry-ripen;
+  animation-delay: var(--growth-delay);
+  animation-duration: 0.72s;
+}
+
+.botanical-growth-part--bud {
+  animation-name: bud-rise;
+  animation-delay: var(--growth-delay);
+  animation-duration: 0.8s;
+}
+
+.botanical-growth-part--flower {
+  animation-name: flower-bloom;
+  animation-delay: var(--growth-delay);
+  animation-duration: 1.05s;
+}
+
+.wedding-bee {
+  position: absolute;
+  z-index: 15;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 40px;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 0.18rem 0.2rem rgb(76 56 36 / 25%));
+  transition: opacity 400ms ease;
+  will-change: transform;
+}
+
+.wedding-bee--visible {
+  opacity: 1;
+}
+
+.wedding-bee__hover {
+  width: 100%;
+  height: 100%;
+  animation: bee-hover 620ms ease-in-out infinite alternate;
+}
+
+.wedding-bee__direction,
+.wedding-bee svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wedding-bee__direction {
+  transition: transform 160ms ease;
+}
+
+.wedding-bee__direction--left {
+  transform: scaleX(-1);
+}
+
+.wedding-bee__wings {
+  transform-box: fill-box;
+  transform-origin: 50% 82%;
+  animation: wing-beat 82ms ease-in-out infinite alternate;
+}
+
+.pollen-mote {
+  position: absolute;
+  z-index: 14;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: var(--colour-gold);
+  box-shadow: 0 0 0.3rem rgb(196 158 72 / 65%);
+  animation: pollen-drift 900ms ease-out forwards;
 }
 
 .section-intro {
@@ -614,6 +749,21 @@ address {
   text-transform: uppercase;
 }
 
+.beehive-home {
+  position: relative;
+  width: min(100%, var(--content-width));
+  margin: -0.5rem auto 0;
+  padding: 0 1rem max(0.5rem, env(safe-area-inset-bottom));
+}
+
+.beehive-home__image {
+  display: block;
+  width: min(14rem, 58vw);
+  height: auto;
+  margin-inline: auto;
+  filter: drop-shadow(0 0.3rem 0.35rem rgb(92 58 29 / 9%));
+}
+
 @keyframes botanical-breathe {
   from {
     opacity: 0.92;
@@ -623,6 +773,133 @@ address {
   to {
     opacity: 1;
     transform: scale(1.003);
+  }
+}
+
+@keyframes botanical-breathe-svg {
+  from {
+    transform: scale(0.997);
+  }
+
+  to {
+    transform: scale(1.003);
+  }
+}
+
+@keyframes stem-draw {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 1;
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes leaf-unfurl {
+  0% {
+    opacity: 0;
+    transform: scale(0.02) rotate(-9deg);
+  }
+
+  68% {
+    opacity: 1;
+    transform: scale(1.07) rotate(1.5deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes berry-ripen {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  72% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bud-rise {
+  0% {
+    opacity: 0;
+    transform: scale(0.05) translateY(22%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes flower-bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.02) rotate(-10deg);
+  }
+
+  62% {
+    opacity: 1;
+    transform: scale(1.14) rotate(2deg);
+  }
+
+  82% {
+    transform: scale(0.97) rotate(-0.5deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes bee-hover {
+  from {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+
+  to {
+    transform: translateY(2px) rotate(1deg);
+  }
+}
+
+@keyframes wing-beat {
+  from {
+    opacity: 0.62;
+    transform: scaleY(0.28) rotate(-3deg);
+  }
+
+  to {
+    opacity: 0.94;
+    transform: scaleY(1) rotate(3deg);
+  }
+}
+
+@keyframes pollen-drift {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--pollen-x)), calc(-50% + var(--pollen-y))) scale(1.15);
   }
 }
 
@@ -853,8 +1130,12 @@ address {
 }
 
 @media (forced-colors: active) {
-  .ornate-panel::before {
+  .ornate-panel::before,
+  .botanical-frame-stage,
+  .wedding-bee,
+  .pollen-mote {
     background-image: none;
+    display: none;
   }
 }
 
@@ -872,6 +1153,9 @@ address {
 
   .page-nav,
   .botanical-divider,
+  .botanical-frame-stage,
+  .wedding-bee,
+  .pollen-mote,
   .skip-link,
   .ornate-panel::before {
     display: none;

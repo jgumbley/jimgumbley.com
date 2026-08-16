@@ -31,6 +31,8 @@ TEMPLATE = SOURCE / "page.html"
 STATIC = SOURCE / "static"
 STATIC_FILES = (
     "wedding.css",
+    "wedding.js",
+    "assets/beehive.svg",
     "assets/botanical-frame.svg",
     "assets/botanical-divider.svg",
     "assets/flower-favicon.svg",
@@ -508,6 +510,7 @@ class DocumentInspector(HTMLParser):
         self.tags: list[str] = []
         self.metas: dict[tuple[str, str], list[str]] = {}
         self.links: list[dict[str, str]] = []
+        self.scripts: list[dict[str, str]] = []
 
     def handle_starttag(self, tag: str, attrs_value: list[tuple[str, str | None]]) -> None:
         attrs = {name: value or "" for name, value in attrs_value}
@@ -522,6 +525,8 @@ class DocumentInspector(HTMLParser):
                 self.fragments.append(attrs["href"][1:])
         if tag in {"img", "script", "iframe", "source"} and attrs.get("src"):
             self.resources.append(attrs["src"])
+        if tag == "script":
+            self.scripts.append(attrs)
         if tag == "link":
             self.links.append(attrs)
             resource_rels = {"stylesheet", "icon", "apple-touch-icon"}
@@ -579,8 +584,19 @@ def check_tree(folder: Path, data: dict, manifest_raw: bytes, expected_html: byt
     positions = [html_text.find(f'id="{section["id"]}"') for section in data["sections"]]
     if any(position < 0 for position in positions) or positions != sorted(positions):
         raise BuildError("wedding/index.html: sections are not rendered in manifest order")
-    if "script" in inspector.tags or "iframe" in inspector.tags:
-        raise BuildError("wedding/index.html: scripts and iframes are forbidden")
+    if "iframe" in inspector.tags:
+        raise BuildError("wedding/index.html: iframes are forbidden")
+    if len(inspector.scripts) != 2:
+        raise BuildError("wedding/index.html: must contain the foliage bootstrap and animation module scripts")
+    bootstrap, animation = inspector.scripts
+    if bootstrap.get("nonce") != "wedding-foliage" or bootstrap.get("src"):
+        raise BuildError("wedding/index.html: foliage bootstrap must be the nonced inline script")
+    if (
+        animation.get("src", "").split("?", 1)[0] != "./wedding.js"
+        or animation.get("type") != "module"
+        or "nonce" in animation
+    ):
+        raise BuildError("wedding/index.html: animation must load from the controlled wedding.js module")
     if any("manifest" in link.get("rel", "").split() for link in inspector.links):
         raise BuildError("wedding/index.html: content manifest must not be linked as a web app manifest")
     for resource in inspector.resources:
@@ -623,7 +639,7 @@ def check_tree(folder: Path, data: dict, manifest_raw: bytes, expected_html: byt
         if not path.is_file():
             raise BuildError(f"wedding/wedding.css: missing local resource {value}")
 
-    for name in ("botanical-frame.svg", "botanical-divider.svg", "flower-favicon.svg", "social-preview.svg"):
+    for name in ("beehive.svg", "botanical-frame.svg", "botanical-divider.svg", "flower-favicon.svg", "social-preview.svg"):
         check_svg(folder / "assets" / name, require_square=name == "flower-favicon.svg")
     for name, dimensions in {
         "favicon-32.png": (32, 32),

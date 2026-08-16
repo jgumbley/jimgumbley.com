@@ -28,6 +28,7 @@ wedding: venv
 	$(call success)
 
 wedding-check: wedding
+	node --check weddingsrc/static/wedding.js
 	venv/bin/python weddingsrc/generate.py --check
 	$(call success)
 
@@ -58,8 +59,8 @@ cleanblog:
 clean: cleanblog cleanwedding clean_venv
 
 cleanwedding:
-	rm -f wedding/index.html wedding/manifest.json wedding/wedding.css \
-		wedding/assets/botanical-frame.svg wedding/assets/botanical-divider.svg \
+	rm -f wedding/index.html wedding/manifest.json wedding/wedding.css wedding/wedding.js \
+		wedding/assets/beehive.svg wedding/assets/botanical-frame.svg wedding/assets/botanical-divider.svg \
 		wedding/assets/flower-favicon.svg wedding/assets/favicon-32.png \
 		wedding/assets/apple-touch-icon.png wedding/assets/social-preview.svg \
 		wedding/assets/social-preview.png
