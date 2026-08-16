@@ -90,37 +90,6 @@
     </g>
   </defs>
 
-  <style>
-    .bee-hover {
-      animation: bee-hover 5.8s ease-in-out infinite;
-      transform-origin: center;
-    }
-    .bee-wing-left,
-    .bee-wing-right {
-      animation: bee-wing 180ms ease-in-out infinite alternate;
-      transform-box: fill-box;
-      transform-origin: bottom center;
-    }
-    .bee-wing-right {
-      animation-delay: -90ms;
-    }
-    @keyframes bee-hover {
-      0%, 100% { transform: translate(0 0) rotate(-4deg); }
-      28% { transform: translate(9px -6px) rotate(3deg); }
-      58% { transform: translate(3px 7px) rotate(-1deg); }
-      78% { transform: translate(-6px 2px) rotate(4deg); }
-    }
-    @keyframes bee-wing {
-      from { transform: scaleY(.42) rotate(-8deg); opacity: .58; }
-      to { transform: scaleY(1) rotate(7deg); opacity: .9; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .bee-hover,
-      .bee-wing-left,
-      .bee-wing-right { animation: none; }
-    }
-  </style>
-
   <rect x="20" y="20" width="1160" height="860" rx="2" fill="none" stroke="#b88735" stroke-width="2" vector-effect="non-scaling-stroke"/>
   <rect x="27" y="27" width="1146" height="846" rx="1" fill="none" stroke="#e0c98f" stroke-width="0.7" vector-effect="non-scaling-stroke" opacity=".85"/>
   <rect x="34" y="34" width="1132" height="832" fill="none" stroke="#c49e48" stroke-width="0.55" vector-effect="non-scaling-stroke" opacity=".42"/>
@@ -138,19 +107,29 @@
     <circle cx="624" cy="872" r="2.2"/>
   </g>
 
-  <g transform="translate(1012 192)">
-    <g class="bee-hover">
-      <ellipse class="bee-wing-left" cx="-5" cy="-7" rx="7" ry="10" transform="rotate(-34)" fill="#fff8e9" stroke="#b88735" stroke-width="1" opacity=".82"/>
-      <ellipse class="bee-wing-right" cx="7" cy="-7" rx="7" ry="10" transform="rotate(34)" fill="#fff8e9" stroke="#b88735" stroke-width="1" opacity=".82"/>
-      <ellipse cx="1" cy="1" rx="7" ry="11" fill="#dca43b" stroke="#5c3a1d" stroke-width="1.5"/>
-      <path d="M-5-4H7M-6 1H8M-4 6H6" fill="none" stroke="#5c3a1d" stroke-width="2.4"/>
-      <circle cx="1" cy="-10" r="4" fill="#5c3a1d"/>
-      <path d="M-1-13C-5-18-8-17-9-15M3-13C7-18 10-16 10-14" fill="none" stroke="#5c3a1d" stroke-width="1.2" stroke-linecap="round"/>
-      <path d="M0 12L1 17L3 12" fill="#5c3a1d"/>
-    </g>
+  <g opacity=".88">
+    <path d="M332 28C391 30 440 43 502 29M868 28C809 30 760 43 698 29" fill="none" stroke="#7d8566" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <use href="#round-leaf" transform="translate(378 31) rotate(-8) scale(.72)"/>
+    <use href="#leaf" transform="translate(424 38) rotate(18) scale(.68)"/>
+    <use href="#round-leaf" transform="translate(468 34) rotate(-16) scale(.62)"/>
+    <use href="#small-blossom" transform="translate(498 29) scale(.72)"/>
+    <use href="#round-leaf" transform="translate(822 31) rotate(188) scale(.72)"/>
+    <use href="#leaf" transform="translate(776 38) rotate(162) scale(.68)"/>
+    <use href="#round-leaf" transform="translate(732 34) rotate(196) scale(.62)"/>
+    <use href="#small-blossom" transform="translate(702 29) scale(.72)"/>
+
+    <path d="M332 872C391 870 440 857 502 871M868 872C809 870 760 857 698 871" fill="none" stroke="#7d8566" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <use href="#round-leaf" transform="translate(378 869) rotate(8) scale(.72)"/>
+    <use href="#leaf" transform="translate(424 862) rotate(-18) scale(.68)"/>
+    <use href="#round-leaf" transform="translate(468 866) rotate(16) scale(.62)"/>
+    <use href="#small-blossom" transform="translate(498 871) scale(.72)"/>
+    <use href="#round-leaf" transform="translate(822 869) rotate(172) scale(.72)"/>
+    <use href="#leaf" transform="translate(776 862) rotate(198) scale(.68)"/>
+    <use href="#round-leaf" transform="translate(732 866) rotate(164) scale(.62)"/>
+    <use href="#small-blossom" transform="translate(702 871) scale(.72)"/>
   </g>
 
-  <svg x="0" y="0" width="300" height="300" viewBox="0 0 300 300" preserveAspectRatio="xMinYMin meet">
+  <svg x="0" y="0" width="420" height="400" viewBox="0 0 300 300" preserveAspectRatio="xMinYMin meet">
     <path d="M20 32C62 45 90 76 116 127M31 21C76 35 127 39 182 31" fill="none" stroke="#676e53" stroke-width="3" opacity=".7"/>
     <use href="#leaf" transform="translate(42 48) rotate(26) scale(1.25)"/>
     <use href="#leaf" transform="translate(77 77) rotate(68)"/>
@@ -170,7 +149,7 @@
     <circle cx="151" cy="33" r="3.5" fill="#e99c64"/>
   </svg>
 
-  <svg x="900" y="0" width="300" height="300" viewBox="0 0 300 300" preserveAspectRatio="xMaxYMin meet">
+  <svg x="780" y="0" width="420" height="400" viewBox="0 0 300 300" preserveAspectRatio="xMaxYMin meet">
     <path d="M280 29C241 45 218 79 203 133M276 24C235 31 188 32 148 49" fill="none" stroke="#676e53" stroke-width="3" opacity=".7"/>
     <use href="#leaf" transform="translate(257 45) rotate(154) scale(1.1)"/>
     <use href="#leaf" transform="translate(229 72) rotate(111) scale(.9)"/>
@@ -190,7 +169,7 @@
     <circle cx="164" cy="53" r="3" fill="#e99c64"/>
   </svg>
 
-  <svg x="0" y="600" width="300" height="300" viewBox="0 0 300 300" preserveAspectRatio="xMinYMax meet">
+  <svg x="0" y="500" width="420" height="400" viewBox="0 0 300 300" preserveAspectRatio="xMinYMax meet">
     <path d="M23 275C54 246 66 206 72 163M24 276C75 270 119 270 169 280" fill="none" stroke="#676e53" stroke-width="3" opacity=".7"/>
     <use href="#leaf" transform="translate(39 250) rotate(-46) scale(1.15)"/>
     <use href="#leaf" transform="translate(62 215) rotate(-94) scale(.95)"/>
@@ -209,7 +188,7 @@
     <circle cx="139" cy="278" r="4" fill="#db6126"/>
   </svg>
 
-  <svg x="900" y="600" width="300" height="300" viewBox="0 0 300 300" preserveAspectRatio="xMaxYMax meet">
+  <svg x="780" y="500" width="420" height="400" viewBox="0 0 300 300" preserveAspectRatio="xMaxYMax meet">
     <path d="M278 278C245 244 228 207 220 160M277 277C232 271 196 275 145 280" fill="none" stroke="#676e53" stroke-width="3" opacity=".7"/>
     <use href="#leaf" transform="translate(258 248) rotate(214) scale(1.2)"/>
     <use href="#leaf" transform="translate(232 213) rotate(244) scale(.88)"/>
@@ -228,33 +207,4 @@
     <circle cx="144" cy="280" r="4" fill="#e99c64"/>
   </svg>
 
-  <svg x="0" y="300" width="190" height="300" viewBox="0 0 190 300" preserveAspectRatio="xMinYMid meet">
-    <path d="M22 18C75 73 36 118 77 158C103 184 66 230 25 282" fill="none" stroke="#676e53" stroke-width="3" opacity=".72"/>
-    <use href="#leaf" transform="translate(41 52) rotate(34) scale(.86)"/>
-    <use href="#round-leaf" transform="translate(62 91) rotate(104) scale(.78)"/>
-    <use href="#leaf" transform="translate(51 129) rotate(-25) scale(.78)"/>
-    <use href="#round-leaf" transform="translate(76 173) rotate(116) scale(.82)"/>
-    <use href="#leaf" transform="translate(57 216) rotate(-49) scale(.86)"/>
-    <use href="#round-leaf" transform="translate(33 255) rotate(-112) scale(.76)"/>
-    <use href="#small-blossom" transform="translate(51 113) rotate(10) scale(1.15)"/>
-    <use href="#cream-rose" transform="translate(70 184) rotate(-12) scale(.58)"/>
-    <use href="#bud" transform="translate(38 234) rotate(-32) scale(.55)"/>
-    <circle cx="53" cy="72" r="4.5" fill="#db6126"/>
-    <circle cx="65" cy="80" r="3.2" fill="#e99c64"/>
-  </svg>
-
-  <svg x="1010" y="300" width="190" height="300" viewBox="0 0 190 300" preserveAspectRatio="xMaxYMid meet">
-    <path d="M168 18C115 73 154 118 113 158C87 184 124 230 165 282" fill="none" stroke="#676e53" stroke-width="3" opacity=".72"/>
-    <use href="#leaf" transform="translate(149 52) rotate(146) scale(.86)"/>
-    <use href="#round-leaf" transform="translate(128 91) rotate(76) scale(.78)"/>
-    <use href="#leaf" transform="translate(139 129) rotate(205) scale(.78)"/>
-    <use href="#round-leaf" transform="translate(114 173) rotate(64) scale(.82)"/>
-    <use href="#leaf" transform="translate(133 216) rotate(229) scale(.86)"/>
-    <use href="#round-leaf" transform="translate(157 255) rotate(-68) scale(.76)"/>
-    <use href="#small-blossom" transform="translate(139 113) rotate(-10) scale(1.15)"/>
-    <use href="#cream-rose" transform="translate(120 184) rotate(12) scale(.58)"/>
-    <use href="#bud" transform="translate(152 234) rotate(32) scale(.55)"/>
-    <circle cx="137" cy="72" r="4.5" fill="#db6126"/>
-    <circle cx="125" cy="80" r="3.2" fill="#e99c64"/>
-  </svg>
 </svg>
