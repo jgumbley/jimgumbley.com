@@ -77,11 +77,11 @@
   <use href="#leaf-shape" transform="translate(347 34) rotate(22) scale(.66)"/>
 
   <g class="divider-bloom">
-    <use href="#cream-rose" transform="translate(244 37) rotate(-10) scale(.83)"/>
-    <use href="#rose" transform="translate(276 39) rotate(8) scale(.72)"/>
-    <use href="#rose" transform="translate(300 37) rotate(-5) scale(1.12)"/>
-    <use href="#cream-rose" transform="translate(327 38) rotate(12) scale(.9)"/>
-    <use href="#rose" transform="translate(355 38) rotate(-12) scale(.67)"/>
+    <use href="#cream-rose" transform="translate(242 37) rotate(-10) scale(.98)"/>
+    <use href="#rose" transform="translate(274 39) rotate(8) scale(.86)"/>
+    <use href="#rose" transform="translate(300 37) rotate(-5) scale(1.34)"/>
+    <use href="#cream-rose" transform="translate(328 38) rotate(12) scale(1.06)"/>
+    <use href="#rose" transform="translate(358 38) rotate(-12) scale(.82)"/>
   </g>
 
   <path d="M292 11L300 3L308 11L300 19Z" fill="none" stroke="#c49e48" stroke-width="1.1"/>

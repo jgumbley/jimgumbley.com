@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function growWeddingGarden() {
   const [frameSource, dividerSource] = await Promise.all([
     fetchSvg("./assets/botanical-frame.svg?v=20260816b"),
-    fetchSvg("./assets/botanical-divider.svg?v=20260816b"),
+    fetchSvg("./assets/botanical-divider.svg?v=20260816c"),
   ]);
 
   document.querySelectorAll(".ornate-panel").forEach((panel, index) => {
@@ -30,9 +30,25 @@ async function growWeddingGarden() {
     image.replaceWith(divider);
   });
 
+  observeBotanicalGrowth();
+
   if (!MOTION_REDUCED.matches) {
     window.setTimeout(launchBee, 5100);
   }
+}
+
+function observeBotanicalGrowth() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+      entry.target.classList.add("botanical-art--revealed");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.01 });
+
+  document.querySelectorAll(".botanical-art").forEach((artwork) => observer.observe(artwork));
 }
 
 async function fetchSvg(url) {
@@ -185,6 +201,7 @@ function launchBee() {
     current: start,
     routeIndex: 0,
     animation: null,
+    directionAnimation: null,
     routeTimer: null,
     scrollTimer: null,
     flightToken: 0,
@@ -277,7 +294,6 @@ function flyBee(journey, target, onArrival) {
   const route = meanderingRoute(current, target, journey.flightToken);
   const duration = route.length / BEE_CRUISING_SPEED;
   const direction = journey.bee.querySelector(".wedding-bee__direction");
-  direction.classList.toggle("wedding-bee__direction--left", target.x < current.x);
 
   const token = journey.flightToken;
   const animation = journey.bee.animate(route.keyframes, {
@@ -285,7 +301,13 @@ function flyBee(journey, target, onArrival) {
     easing: "linear",
     fill: "forwards",
   });
+  const directionAnimation = direction.animate(route.directionKeyframes, {
+    duration,
+    easing: "linear",
+    fill: "forwards",
+  });
   journey.animation = animation;
+  journey.directionAnimation = directionAnimation;
 
   animation.addEventListener("finish", () => {
     if (token !== journey.flightToken) {
@@ -294,7 +316,10 @@ function flyBee(journey, target, onArrival) {
     journey.current = target;
     journey.bee.style.transform = translate(target);
     journey.animation = null;
+    journey.directionAnimation = null;
+    direction.style.transform = `scaleX(${route.finalFacing})`;
     animation.cancel();
+    directionAnimation.cancel();
     onArrival();
   }, { once: true });
 }
@@ -335,13 +360,29 @@ function meanderingRoute(start, finish, phase) {
       transform: translate(point),
       offset: routeLength === 0 ? 1 : cumulative[index] / routeLength,
     })),
+    directionKeyframes: points.map((point, index) => ({
+      transform: `scaleX(${segmentFacing(points, index)})`,
+      offset: routeLength === 0 ? 1 : cumulative[index] / routeLength,
+      easing: "steps(1, end)",
+    })),
+    finalFacing: segmentFacing(points, points.length - 1),
   };
+}
+
+function segmentFacing(points, index) {
+  const previous = points[Math.max(0, index - 1)];
+  const next = points[Math.min(points.length - 1, index + 1)];
+  return next.x < previous.x ? -1 : 1;
 }
 
 function cancelCurrentFlight(journey) {
   window.clearTimeout(journey.routeTimer);
   journey.routeTimer = null;
   journey.flightToken += 1;
+  if (journey.directionAnimation) {
+    journey.directionAnimation.cancel();
+    journey.directionAnimation = null;
+  }
   if (!journey.animation) {
     return;
   }
@@ -378,6 +419,7 @@ function enterHive(journey, entrance) {
 
 function visibleFlowers() {
   return [...document.querySelectorAll(".bee-flower")]
+    .filter((flower) => flower.closest(".botanical-art--revealed"))
     .map((flower) => {
       const bounds = flower.getBoundingClientRect();
       return {
@@ -441,7 +483,7 @@ function releasePollen(point) {
 }
 
 function translate(point) {
-  return `translate3d(${point.x - 25}px, ${point.y - 20}px, 0)`;
+  return `translate3d(${point.x - 17.5}px, ${point.y - 14}px, 0)`;
 }
 
 function distance(first, second) {
