@@ -66,13 +66,33 @@
           "label": "Ceremony",
           "name": "Great Malvern Priory",
           "addressLines": ["Church Street", "Malvern", "Worcestershire", "WR14 2AY"],
-          "timingNote": "Guests seated by 11:40 am"
+          "timingNote": "Guests seated by 11:40 am",
+          "links": [
+            {
+              "label": "Priory website",
+              "href": "https://www.greatmalvernpriory.org.uk/"
+            },
+            {
+              "label": "Directions to the Priory",
+              "href": "https://www.google.com/maps/search/?api=1&query=Great+Malvern+Priory%2C+Church+Street%2C+Malvern+WR14+2AY"
+            }
+          ]
         },
         {
           "label": "Reception",
           "name": "Leigh & Bransford Memorial Hall",
           "addressLines": ["Sherridge Road", "Leigh Sinton", "Worcestershire", "WR13 5DE"],
-          "timingNote": "Drinks from 2:00 pm"
+          "timingNote": "Drinks from 2:00 pm",
+          "links": [
+            {
+              "label": "Reception hall website",
+              "href": "https://leighandbransfordhall.co.uk/"
+            },
+            {
+              "label": "Directions to the hall",
+              "href": "https://www.google.com/maps/search/?api=1&query=Leigh+and+Bransford+Memorial+Hall%2C+Sherridge+Road%2C+Leigh+Sinton+WR13+5DE"
+            }
+          ]
         }
       ],
       "note": "Please allow time for travel and parking between venues. Guests should travel directly to the hall after the service."
@@ -89,12 +109,24 @@
           "body": [
             "The best parking for Great Malvern Priory is at Waitrose, where free parking is available for up to three hours.",
             "The reception hall has its own car park with ample parking."
+          ],
+          "links": [
+            {
+              "label": "Find Waitrose Great Malvern",
+              "href": "https://www.google.com/maps/search/?api=1&query=Waitrose+Great+Malvern%2C+Edith+Walk%2C+Great+Malvern+WR14+4WR"
+            }
           ]
         },
         {
           "heading": "From London",
           "body": [
             "Great Western Railway (GWR) runs a good service from London Paddington to Great Malvern."
+          ],
+          "links": [
+            {
+              "label": "Great Malvern station information",
+              "href": "https://www.gwr.com/stations-and-destinations/stations/great-malvern"
+            }
           ]
         },
         {
@@ -102,6 +134,50 @@
           "body": [
             "The Great Malvern Hotel is reasonably priced and within walking distance of Great Malvern Priory.",
             "There are lots of nice places for breakfast in the town."
+          ],
+          "links": [
+            {
+              "label": "Visit the Great Malvern Hotel",
+              "href": "https://www.great-malvern-hotel.com/"
+            },
+            {
+              "label": "Browse local cafés",
+              "href": "https://www.visitthemalverns.org/cuisine/cafes/"
+            }
+          ]
+        },
+        {
+          "heading": "Taxis",
+          "body": [
+            "Uber is available in Malvern and generally works well, although pick-up times can be longer than in larger towns and cities.",
+            "For the end of the evening, we recommend booking ahead for the 10:30 pm carriages. Local firms include Smith Taxis, Access Taxis and BNS Travel."
+          ],
+          "links": [
+            { "label": "Smith Taxis", "href": "https://www.smithtaxis.co.uk/" },
+            { "label": "Access Taxis", "href": "https://malverntaxis.com/" },
+            { "label": "BNS Travel", "href": "https://www.bnstravel.co.uk/" },
+            { "label": "Uber in Malvern", "href": "https://www.uber.com/global/en/r/cities/malvern-eng-gb/" }
+          ]
+        },
+        {
+          "heading": "A Sunday walk",
+          "body": [
+            "If you are staying in Malvern on Sunday and fancy a walk, the climb from the town centre to the top of Worcestershire Beacon is rewarding but challenging, with some steep sections.",
+            "If you are driving and would prefer something gentler, Black Hill car park on Jubilee Drive is the best shortcut. From there, a short path with a gentle gradient leads up to the ridge and panoramic views."
+          ],
+          "links": [
+            {
+              "label": "Walking in the Malverns",
+              "href": "https://www.visitthemalverns.org/things-to-do/walking/"
+            },
+            {
+              "label": "Black Hill parking information",
+              "href": "https://www.malvernhills.org.uk/visiting/parking/"
+            },
+            {
+              "label": "Directions to Black Hill car park",
+              "href": "https://www.google.com/maps/search/?api=1&query=Black+Hill+Car+Park%2C+Jubilee+Drive%2C+Malvern+WR13+6DW"
+            }
           ]
         }
       ]
@@ -113,9 +189,28 @@
       "heading": "Reception details",
       "intro": "Food, seating, and practical notes",
       "items": [
-        { "heading": "Food", "body": ["Welcome drinks and canapés will be served from 2:00 pm. A buffet meal will begin from 3:00 pm."] },
+        {
+          "heading": "Food",
+          "body": [
+            "Welcome drinks and canapés will be served from 2:00 pm. A buffet meal will begin from 3:00 pm.",
+            "The buffet will feature traditional Lebanese and Moroccan cuisine, with vegetarian options available.",
+            "Some dishes may contain nuts, and we cannot guarantee that any dish will be completely free from nuts or traces of nuts. Guests with nut allergies should take particular care."
+          ]
+        },
+        {
+          "heading": "Drinks",
+          "body": [
+            "Soft drinks, wine, beer and cider will be available. If you would prefer something else, or have a favourite drink, please feel free to bring your own."
+          ]
+        },
         { "heading": "Seating", "body": ["Seating at the reception will be informal. Please choose any available table, except tables marked Reserved"] },
-        { "heading": "Children", "body": ["Children are warmly invited. Parents are kindly asked to supervise them throughout the day."] }
+        { "heading": "Children", "body": ["Children are warmly invited. Parents are kindly asked to supervise them throughout the day."] },
+        {
+          "heading": "Dress code",
+          "body": [
+            "There is no particular dress code — please wear whatever makes you feel comfortable and ready to celebrate. It is a wedding, and the ceremony takes place at Great Malvern Priory, a Church of England church, so please bear the occasion and setting in mind."
+          ]
+        }
       ]
     },
     {
@@ -125,7 +220,11 @@
       "navLabel": "Gifts",
       "heading": "Gifts & final notes",
       "eyebrow": "Wedding gifts",
-      "body": ["Your presence at our wedding is the greatest gift to us. For those who have kindly asked, we have created a wedding gift list."],
+      "body": [
+        "Your presence at our wedding is the greatest gift to us.",
+        "If you would like to give us something, we love food and drink treats, things for the house, or any other gift you think we might enjoy.",
+        "If you are stuck for inspiration, we have also set up a gift list with The Wedding Shop."
+      ],
       "link": { "label": "View our wedding gift list", "href": "https://www.weddingshop.com/buy/view/332579" }
     },
     {

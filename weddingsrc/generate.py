@@ -107,6 +107,19 @@ def https_url(value: object, path: str) -> str:
     return value
 
 
+def validate_link(value: object, path: str) -> dict:
+    link = closed(value, path, {"label", "href"})
+    text(link["label"], f"{path}.label")
+    https_url(link["href"], f"{path}.href")
+    return link
+
+
+def validate_links(value: object, path: str) -> list[dict]:
+    if not isinstance(value, list) or not value:
+        fail(path, "must be a non-empty array")
+    return [validate_link(item, f"{path}[{index}]") for index, item in enumerate(value)]
+
+
 def validate_manifest(data: dict) -> None:
     closed(data, "$", {"schemaVersion", "site", "event", "sections", "footer"})
     if type(data["schemaVersion"]) is not int or data["schemaVersion"] != 1:
@@ -212,10 +225,14 @@ def validate_manifest(data: dict) -> None:
                 fail(f"{path}.items", "must contain at least two venues")
             for item_index, item_value in enumerate(items):
                 item_path = f"{path}.items[{item_index}]"
-                item = closed(item_value, item_path, {"label", "name", "addressLines", "timingNote"})
+                item = closed(
+                    item_value, item_path, {"label", "name", "addressLines", "timingNote"}, {"links"}
+                )
                 for key in ("label", "name", "timingNote"):
                     text(item[key], f"{item_path}.{key}")
                 text_list(item["addressLines"], f"{item_path}.addressLines")
+                if "links" in item:
+                    validate_links(item["links"], f"{item_path}.links")
         elif kind == "cards":
             section = closed(section_value, path, common | {"heading", "items"}, optional_nav | {"intro"})
             text(section["heading"], f"{path}.heading")
@@ -226,9 +243,11 @@ def validate_manifest(data: dict) -> None:
                 fail(f"{path}.items", "must be a non-empty array")
             for item_index, item_value in enumerate(items):
                 item_path = f"{path}.items[{item_index}]"
-                item = closed(item_value, item_path, {"heading", "body"})
+                item = closed(item_value, item_path, {"heading", "body"}, {"links"})
                 text(item["heading"], f"{item_path}.heading")
                 text_list(item["body"], f"{item_path}.body")
+                if "links" in item:
+                    validate_links(item["links"], f"{item_path}.links")
         elif kind == "callout":
             section = closed(
                 section_value, path, common | {"heading", "body"},
@@ -242,9 +261,7 @@ def validate_manifest(data: dict) -> None:
             if "variant" in section and section["variant"] not in {"gift", "photo"}:
                 fail(f"{path}.variant", "must be 'gift' or 'photo'")
             if "link" in section:
-                link = closed(section["link"], f"{path}.link", {"label", "href"})
-                text(link["label"], f"{path}.link.label")
-                https_url(link["href"], f"{path}.link.href")
+                validate_link(section["link"], f"{path}.link")
         elif kind == "closing":
             section = closed(section_value, path, common | {"heading"}, optional_nav)
             text(section["heading"], f"{path}.heading")
@@ -272,6 +289,17 @@ def esc(value: object) -> str:
 
 def paragraphs(items: list[str]) -> str:
     return "\n".join(f"      <p>{esc(item)}</p>" for item in items)
+
+
+def render_links(items: list[dict] | None) -> str:
+    if not items:
+        return ""
+    links = "\n".join(
+        f'          <li><a href="{esc(item["href"])}">{esc(item["label"])}</a></li>' for item in items
+    )
+    return f'''        <ul class="detail-links">
+{links}
+        </ul>'''
 
 
 def divider() -> str:
@@ -316,6 +344,7 @@ def render_venues(section: dict) -> str:
         <h3>{esc(item['name'])}</h3>
         <address>{address}</address>
         <p class="timing-note">{esc(item['timingNote'])}</p>
+{render_links(item.get('links'))}
       </article>''')
     intro = f'    <p class="section-intro">{esc(section["intro"])}</p>' if section.get("intro") else ""
     return f'''<section class="site-section" id="{esc(section['id'])}">
@@ -335,13 +364,14 @@ def render_cards(section: dict) -> str:
         cards.append(f'''      <article class="detail-card">
         <h3>{esc(item['heading'])}</h3>
 {paragraphs(item['body'])}
+{render_links(item.get('links'))}
       </article>''')
     intro = f'    <p class="section-intro">{esc(section["intro"])}</p>' if section.get("intro") else ""
     return f'''<section class="site-section" id="{esc(section['id'])}">
     <h2>{esc(section['heading'])}</h2>
 {divider()}
 {intro}
-    <div class="card-grid">
+    <div class="card-grid card-grid--{len(section['items'])}">
 {chr(10).join(cards)}
     </div>
   </section>'''
@@ -467,6 +497,7 @@ class DocumentInspector(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.ids: list[str] = []
         self.fragments: list[str] = []
+        self.anchors: list[str] = []
         self.resources: list[str] = []
         self.h1_count = 0
         self.tags: list[str] = []
@@ -480,8 +511,10 @@ class DocumentInspector(HTMLParser):
             self.ids.append(attrs["id"])
         if tag == "h1":
             self.h1_count += 1
-        if tag == "a" and attrs.get("href", "").startswith("#"):
-            self.fragments.append(attrs["href"][1:])
+        if tag == "a" and attrs.get("href"):
+            self.anchors.append(attrs["href"])
+            if attrs["href"].startswith("#"):
+                self.fragments.append(attrs["href"][1:])
         if tag in {"img", "script", "iframe", "source"} and attrs.get("src"):
             self.resources.append(attrs["src"])
         if tag == "link":
@@ -535,6 +568,9 @@ def check_tree(folder: Path, data: dict, manifest_raw: bytes, expected_html: byt
     for fragment in inspector.fragments:
         if inspector.ids.count(fragment) != 1:
             raise BuildError(f"wedding/index.html: fragment #{fragment} does not resolve exactly once")
+    for href in inspector.anchors:
+        if not href.startswith("#"):
+            https_url(href, "wedding/index.html anchor href")
     positions = [html_text.find(f'id="{section["id"]}"') for section in data["sections"]]
     if any(position < 0 for position in positions) or positions != sorted(positions):
         raise BuildError("wedding/index.html: sections are not rendered in manifest order")

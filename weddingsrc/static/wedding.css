@@ -329,6 +329,22 @@ main:focus {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.card-grid--4 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card-grid--5 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.card-grid--5 > * {
+  grid-column: span 2;
+}
+
+.card-grid--5 > :nth-last-child(-n + 2) {
+  grid-column: span 3;
+}
+
 .detail-card {
   padding: clamp(1.4rem, 3vw, 2rem);
   border: var(--rule);
@@ -355,6 +371,28 @@ address {
   border-top: 1px solid var(--colour-gold-light);
   color: var(--colour-ink);
   font-style: italic;
+}
+
+.detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 1.25rem 0 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid var(--colour-gold-light);
+  list-style: none;
+}
+
+.detail-links a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--colour-control);
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .callout {
@@ -490,8 +528,15 @@ address {
   }
 
   .venue-grid,
-  .card-grid {
+  .card-grid,
+  .card-grid--4,
+  .card-grid--5 {
     grid-template-columns: 1fr;
+  }
+
+  .card-grid--5 > *,
+  .card-grid--5 > :nth-last-child(-n + 2) {
+    grid-column: auto;
   }
 
   .closing h2 {
@@ -577,6 +622,22 @@ address {
   }
 
   .callout__action a::after {
+    content: " (" attr(href) ")";
+    overflow-wrap: anywhere;
+  }
+
+  .detail-links {
+    display: block;
+  }
+
+  .detail-links a {
+    display: inline;
+    color: #222;
+    font-family: inherit;
+    text-transform: none;
+  }
+
+  .detail-links a::after {
     content: " (" attr(href) ")";
     overflow-wrap: anywhere;
   }
