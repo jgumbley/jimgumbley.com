@@ -2,7 +2,7 @@
 
 const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
 const MOTION_REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)");
-const BEE_CRUISING_SPEED = 0.165;
+const BEE_CRUISING_SPEED = 0.0825;
 const GROWTH_ANIMATIONS = new Set(["berry-ripen", "bud-rise", "flower-bloom", "leaf-unfurl", "stem-draw"]);
 let beeJourney = null;
 let closingGardenComplete = false;
