@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "site": {
+    "language": "en-GB",
+    "title": "Grace & James",
+    "documentTitle": "Grace & James | 26 September 2026",
+    "description": "Wedding day information for Grace and James, including timings, venues, travel and reception details.",
+    "canonicalUrl": "https://www.jimgumbley.com/wedding/",
+    "robots": "noindex,nofollow,noarchive",
+    "themeColor": "#F8F4E8",
+    "socialPreview": {
+      "title": "Grace & James | 26 September 2026",
+      "description": "Wedding information for Grace and James · Saturday, 26 September 2026",
+      "imageUrl": "https://www.jimgumbley.com/wedding/assets/social-preview.png",
+      "imageAlt": "Grace and James wedding information for 26 September 2026, framed with peach flowers and sage leaves",
+      "imageType": "image/png",
+      "imageWidth": 1200,
+      "imageHeight": 630
+    }
+  },
+  "event": {
+    "date": "2026-09-26",
+    "dateDisplay": "Saturday, 26 September 2026",
+    "timezone": "Europe/London",
+    "ceremonyVenue": "Great Malvern Priory"
+  },
+  "sections": [
+    {
+      "id": "welcome",
+      "type": "hero",
+      "eyebrow": "Wedding Information",
+      "title": "Grace & James",
+      "date": {
+        "display": "Saturday, 26 September 2026",
+        "datetime": "2026-09-26"
+      },
+      "venue": {
+        "label": "Ceremony",
+        "name": "Great Malvern Priory"
+      }
+    },
+    {
+      "id": "schedule",
+      "type": "timeline",
+      "navLabel": "Key timings",
+      "heading": "Key timings",
+      "items": [
+        { "time": "11:15", "datetime": "2026-09-26T11:15:00+01:00", "text": "Guests arrive at Great Malvern Priory" },
+        { "time": "11:40", "datetime": "2026-09-26T11:40:00+01:00", "text": "Guests to be seated" },
+        { "time": "12:00", "datetime": "2026-09-26T12:00:00+01:00", "text": "Wedding ceremony begins" },
+        { "time": "1:00", "datetime": "2026-09-26T13:00:00+01:00", "text": "Ceremony concludes" },
+        { "time": "2:00", "datetime": "2026-09-26T14:00:00+01:00", "text": "Welcome drinks and canapés at the hall" },
+        { "time": "3:00", "datetime": "2026-09-26T15:00:00+01:00", "text": "Reception and buffet begin" }
+      ],
+      "note": "Please make your way directly to the reception venue after the service."
+    },
+    {
+      "id": "venues",
+      "type": "venues",
+      "navLabel": "Venues",
+      "heading": "Venues & travel",
+      "intro": "Addresses, directions and parking notes",
+      "items": [
+        {
+          "label": "Ceremony",
+          "name": "Great Malvern Priory",
+          "addressLines": ["Church Street", "Malvern", "Worcestershire", "WR14 2AY"],
+          "timingNote": "Guests seated by 11:40 am"
+        },
+        {
+          "label": "Reception",
+          "name": "Leigh & Bransford Memorial Hall",
+          "addressLines": ["Sherridge Road", "Leigh Sinton", "Worcestershire", "WR13 5DE"],
+          "timingNote": "Drinks from 2:00 pm"
+        }
+      ],
+      "note": "Please allow time for travel and parking between venues. Guests should travel directly to the hall after the service."
+    },
+    {
+      "id": "reception",
+      "type": "cards",
+      "navLabel": "Reception",
+      "heading": "Reception details",
+      "intro": "Food, seating, and practical notes",
+      "items": [
+        { "heading": "Food", "body": ["Welcome drinks and canapés will be served from 2:00 pm. A buffet meal will begin from 3:00 pm."] },
+        { "heading": "Seating", "body": ["Seating at the reception will be informal. Please choose any available table, except tables marked Reserved"] },
+        { "heading": "Children", "body": ["Children are warmly invited. Parents are kindly asked to supervise them throughout the day."] }
+      ]
+    },
+    {
+      "id": "gifts",
+      "type": "callout",
+      "variant": "gift",
+      "navLabel": "Gifts",
+      "heading": "Gifts & final notes",
+      "eyebrow": "Wedding gifts",
+      "body": ["Your presence at our wedding is the greatest gift to us. For those who have kindly asked, we have created a wedding gift list."],
+      "link": { "label": "View our wedding gift list", "href": "https://www.weddingshop.com/buy/view/332579" }
+    },
+    {
+      "id": "photo-guestbook",
+      "type": "callout",
+      "variant": "photo",
+      "navLabel": "Photography",
+      "heading": "Photography",
+      "body": [
+        "We would love you to help us capture the day through your eyes!",
+        "During the reception, visit our Photo Guestbook table, take an instant photo of yourselves, or anything you would like for us to remember. Stick it into our wedding scrapbook and leave us a message, piece of advice or a memory.",
+        "Funny, beautiful, unexpected — we want them all. 🤍"
+      ],
+      "tagline": "Snap it • Stick it • Sign it"
+    },
+    {
+      "id": "closing",
+      "type": "closing",
+      "heading": "We cannot wait to celebrate with you."
+    }
+  ],
+  "footer": { "text": "Grace & James · 26 September 2026" }
+}

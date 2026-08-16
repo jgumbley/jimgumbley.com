@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.jimgumbley.com/wedding/manifest.schema.json",
+  "title": "Grace and James wedding site manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "site", "event", "sections", "footer"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "site": { "$ref": "#/$defs/site" },
+    "event": { "$ref": "#/$defs/event" },
+    "sections": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/hero" },
+          { "$ref": "#/$defs/timeline" },
+          { "$ref": "#/$defs/venues" },
+          { "$ref": "#/$defs/cards" },
+          { "$ref": "#/$defs/callout" },
+          { "$ref": "#/$defs/closing" }
+        ]
+      }
+    },
+    "footer": { "$ref": "#/$defs/footer" }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "textArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/nonEmptyString" }
+    },
+    "socialPreview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "imageUrl", "imageAlt", "imageType", "imageWidth", "imageHeight"],
+      "properties": {
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "imageUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "imageAlt": { "$ref": "#/$defs/nonEmptyString" },
+        "imageType": { "const": "image/png" },
+        "imageWidth": { "const": 1200 },
+        "imageHeight": { "const": 630 }
+      }
+    },
+    "site": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["language", "title", "documentTitle", "description", "canonicalUrl", "robots", "themeColor", "socialPreview"],
+      "properties": {
+        "language": { "$ref": "#/$defs/nonEmptyString" },
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "documentTitle": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "canonicalUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "robots": { "$ref": "#/$defs/nonEmptyString" },
+        "themeColor": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "socialPreview": { "$ref": "#/$defs/socialPreview" }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "dateDisplay", "timezone", "ceremonyVenue"],
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "dateDisplay": { "$ref": "#/$defs/nonEmptyString" },
+        "timezone": { "$ref": "#/$defs/nonEmptyString" },
+        "ceremonyVenue": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "date": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["display", "datetime"],
+      "properties": {
+        "display": { "$ref": "#/$defs/nonEmptyString" },
+        "datetime": { "type": "string", "format": "date" }
+      }
+    },
+    "venueSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "name"],
+      "properties": {
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "name": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "hero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "eyebrow", "title", "date", "venue"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "const": "hero" },
+        "eyebrow": { "$ref": "#/$defs/nonEmptyString" },
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "date": { "$ref": "#/$defs/date" },
+        "venue": { "$ref": "#/$defs/venueSummary" }
+      }
+    },
+    "timelineItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["time", "datetime", "text"],
+      "properties": {
+        "time": { "$ref": "#/$defs/nonEmptyString" },
+        "datetime": { "type": "string", "format": "date-time" },
+        "text": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "timeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "heading", "items"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "const": "timeline" },
+        "navLabel": { "$ref": "#/$defs/nonEmptyString" },
+        "heading": { "$ref": "#/$defs/nonEmptyString" },
+        "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/timelineItem" } },
+        "note": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "venueItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "name", "addressLines", "timingNote"],
+      "properties": {
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "addressLines": { "$ref": "#/$defs/textArray" },
+        "timingNote": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "venues": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "heading", "items", "note"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "const": "venues" },
+        "navLabel": { "$ref": "#/$defs/nonEmptyString" },
+        "heading": { "$ref": "#/$defs/nonEmptyString" },
+        "intro": { "$ref": "#/$defs/nonEmptyString" },
+        "items": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/venueItem" } },
+        "note": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "cardItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["heading", "body"],
+      "properties": {
+        "heading": { "$ref": "#/$defs/nonEmptyString" },
+        "body": { "$ref": "#/$defs/textArray" }
+      }
+    },
+    "cards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "heading", "items"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "const": "cards" },
+        "navLabel": { "$ref": "#/$defs/nonEmptyString" },
+        "heading": { "$ref": "#/$defs/nonEmptyString" },
+        "intro": { "$ref": "#/$defs/nonEmptyString" },
+        "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/cardItem" } }
+      }
+    },
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "href"],
+      "properties": {
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "href": { "type": "string", "format": "uri", "pattern": "^https://" }
+      }
+    },
+    "callout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "heading", "body"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "const": "callout" },
+        "variant": { "enum": ["gift", "photo"] },
+        "navLabel": { "$ref": "#/$defs/nonEmptyString" },
+        "heading": { "$ref": "#/$defs/nonEmptyString" },
+        "eyebrow": { "$ref": "#/$defs/nonEmptyString" },
+        "body": { "$ref": "#/$defs/textArray" },
+        "link": { "$ref": "#/$defs/link" },
+        "tagline": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "closing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "heading"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "const": "closing" },
+        "navLabel": { "$ref": "#/$defs/nonEmptyString" },
+        "heading": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text"],
+      "properties": { "text": { "$ref": "#/$defs/nonEmptyString" } }
+    }
+  }
+}

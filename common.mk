@@ -1,5 +1,10 @@
 .PHONY: digest ingest clean agent
 
+CLIPBOARD_CMD := pbcopy
+ifeq ($(shell uname -s),Linux)
+CLIPBOARD_CMD := wl-copy
+endif
+
 define success
 	@printf '\033[32m\n'; \
 	set -- 🕵️ 🔒 📡 🗝️ 🥃; \
@@ -74,7 +79,7 @@ digest:
 	$(call success)
 
 ingest:
-	$(MAKE) digest | pbcopy
+	$(MAKE) digest | $(CLIPBOARD_CMD)
 	$(call success)
 
 clean:
