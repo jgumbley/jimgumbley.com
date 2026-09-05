@@ -6,7 +6,7 @@
   "@context": "https://schema.org",
   "@type": "Blog",
   "name": "{{ SITENAME }}",
-  "description": "Jim Gumbley's technology blog covering security, AI, and software development",
+  "description": "{{ SITEDESCRIPTION }}",
   "url": "{{ SITEURL }}/",
   "author": {
     "@type": "Person",
@@ -29,16 +29,23 @@
 {% endblock structured_data %}
 
 {% block content %}
+  <section class="post-list" aria-labelledby="index-title">
+  <h1 class="index-title" id="index-title">Recent writing</h1>
   {% for article in articles_page.object_list %}
-    <article>
-      <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
-      <div class="post-info">{{ article.locale_date }}</div>
-      {% if article.image %}
-      <div class="article-image">
-        <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+    {% set reading_minutes = ((article.content|striptags|length / 1200)|round(0, 'ceil'))|int %}
+    <article class="post-card">
+      <div class="post-card__body">
+        <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+        <p class="post-info">{{ article.category }} · <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time> · {{ reading_minutes }} min read</p>
+        <div class="post-summary">{{ article.summary }}</div>
+        <a class="read-more" href="{{ article.url }}" aria-label="Read {{ article.title }}">Read essay <span aria-hidden="true">→</span></a>
       </div>
+      {% if article.image %}
+      <a class="post-card__image" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+        <img src="{{ SITEURL }}/{{ article.image }}" alt="" decoding="async">
+      </a>
       {% endif %}
-      {{ article.content }}
     </article>
   {% endfor %}
+  </section>
 {% endblock content %}

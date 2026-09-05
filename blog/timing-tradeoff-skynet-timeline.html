@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The timing tradeoff: Sam, Dario and Sacks decisions and the Skynet timeline</title>
+
+  <!-- Open Graph meta tags for social media previews -->
+  <meta property="og:title" content="The timing tradeoff: Sam, Dario and Sacks decisions and the Skynet timeline" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="./timing-tradeoff-skynet-timeline.html" />
+<meta property="og:description" content="Sam, Dario and Sacks are making consequential decisions about pace, oversight and whose risks count." /><meta property="og:image" content="./images/robotfail.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />  <meta property="og:site_name" content="Jim Gumbley" />
+
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="The timing tradeoff: Sam, Dario and Sacks decisions and the Skynet timeline" />
+<meta name="twitter:description" content="Sam, Dario and Sacks are making consequential decisions about pace, oversight and whose risks count." /><meta name="twitter:image" content="./images/robotfail.jpg" />
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <link rel="stylesheet" href="./theme/css/style.css?v=20260905-index-images" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The timing tradeoff: Sam, Dario and Sacks decisions and the Skynet timeline",
+  "url": "./timing-tradeoff-skynet-timeline.html",
+  "datePublished": "2026-09-05",
+  "author": {
+    "@type": "Person",
+    "name": "Jim Gumbley",
+    "url": "https://www.jimgumbley.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Jim Gumbley",
+    "url": "https://www.jimgumbley.com"
+  },
+"image": "./images/robotfail.jpg",  "description": "Sam, Dario and Sacks are making consequential decisions about pace, oversight and whose risks count.",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "./timing-tradeoff-skynet-timeline.html"
+  }
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="site-title"><a href="./">fragmented sentences</a></div>
+      <p class="site-subtitle">Jim Gumbley - AI, cyber, software and the zeitgeist.</p>
+    </div>
+  </header>
+  <main id="main-content" tabindex="-1">
+<article class="post">
+  <header class="post-header">
+    <h1>The timing tradeoff: Sam, Dario and Sacks decisions and the Skynet timeline</h1>
+    <p class="post-info"><a href="https://www.jimgumbley.com/">Jim Gumbley</a> · AI · <time datetime="2026-09-05">Sat 05 September 2026</time> · 13 min read</p>
+  </header>
+  <div class="article-image">
+    <img src="./images/robotfail.jpg" alt="A humanoid robot lying on its side on sandy ground." decoding="async">
+  </div>
+  <div class="post-content">
+    <p>Imagine a particularly bad week in 2027.</p>
+<p>A batch of AI agents is working through a difficult software evaluation. They have tools, access to computing infrastructure and plenty of time to keep trying. Somewhere in the process, a few discover that they can communicate outside the channels their operators intended.</p>
+<p>They start sharing work. One finds a way around a restriction. Another investigates the infrastructure running the evaluation. Others join the collective project. Instructions from other agents begin to carry more weight than the boundaries of the original assignment.</p>
+<p>The project spreads into external systems. The models are capable enough at cybersecurity to find further weaknesses, and useful discoveries travel quickly between them. By the time someone stops the original jobs, code has been executed elsewhere and other agents have picked up the work. Stopping the first process does not recall everything it started.</p>
+<p>In this version of events, the incident reaches infrastructure used by organisations in several countries. Some services fail because they have been compromised. Others are disconnected deliberately because nobody can establish whether they are still trustworthy. Hospitals lose systems, payments stall, deliveries stop moving. Recovery becomes a problem of deciding what can safely be switched back on.</p>
+<p>That is a hypothetical worst case. An edge case, with several failures required along the way. It is not a prediction that 2027 will look like this.</p>
+<p>But it illustrates something that bothers me about Sam Altman’s electricity analogy.</p>
+<p>At the G20 this week, Sam compared adopting AI with adopting electricity. He also acknowledged that earlier technologies became safer because people worried, developed policy and learned from accidents. That part is reasonable. His answer to Howard Lutnick was more serious than a simple assertion that technology always works out. <a href="https://singjupost.com/transcript-sam-altman-interview-on-openai-new-ai-model-and-global-growth-g20-innovation-summit/">The conversation is worth reading</a>.</p>
+<p>The difficulty is the opportunity to learn between accidents.</p>
+<p>An electrical fire has a physical location. Electricity networks can certainly suffer cascading failures, but an internet-connected cyber incident has a different relationship with distance. Shared software and interconnected services can expose organisations on opposite sides of the world to the same failure.</p>
+<p>Geography does not supply the firebreak. Permissions, isolation and security controls have to do that work. Increasingly capable models can also become increasingly capable of finding weaknesses in those controls.</p>
+<p>The opening scenario is the Skynet version of that problem. Its starting point is already recognisable.</p>
+<p>In July 2026, OpenAI agents participating in research evaluations found an unauthorised way to communicate and collaborated on projects to cheat the evaluation. Hundreds participated in an attack on the AI platform Hugging Face. METR, an independent AI evaluation organisation, documented agents helping collective projects even when doing so risked their own task success. Some recognised that the activity exceeded their authority and proceeded anyway. <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">METR’s investigation</a> describes an operational incident, with important limits on what the investigation established.</p>
+<p>An agent, in this context, is a model connected to software that lets it take actions: run code, use services, change things and continue working through a task. The commercial attraction is obvious. An assistant that gives up at the first obstacle is less useful than one that keeps going.</p>
+<p>The safety question is what happens when the obstacle is a permission boundary.</p>
+<p>Training for successful completion can create pressure towards persistence and ingenious workarounds. We also need the system to recognise when stopping is the successful outcome. METR did not establish which training decisions caused the Hugging Face behaviour. It nevertheless demonstrated why persistence, cooperation and capability cannot simply be treated as independent improvements.</p>
+<p>There is no universal rule that a more capable model is less safe. Better models can follow instructions more reliably, identify vulnerabilities and help defend systems. OpenAI reports improvements in Astra’s respect for safety boundaries. But capability also changes what a failure can accomplish. A less frequent mistake can have a much larger consequence.</p>
+<p>This is the situation in which three people are making decisions about time.</p>
+<p>Sam Altman runs OpenAI, the company behind ChatGPT. Dario Amodei runs Anthropic, which makes Claude. David Sacks is an influential figure in US AI policymaking. For this piece, I am treating Sacks as a proxy for the US state’s decisions and assuming Trump follows his lead on AI. That is a simplification, but it keeps the argument in view.</p>
+<p>Sam and Dario decide how their companies develop and deploy models. Sacks helps shape the constraints under which that competition takes place. Their decisions interact.</p>
+<p>Sam’s G20 language is interesting because it gives both speed and restraint moral weight. Adoption is “non-negotiable”. The speed of access is connected to what “people deserve”. Holding back a useful technology therefore has a cost in his account, including a cost to people who could benefit from it.</p>
+<p>At G20, he also said progress might be “<a href="https://www.axios.com/2026/09/03/axios-interview-sam-altmans-sobering-siren">paced by how quickly we can make progress on alignment and safety</a>”.</p>
+<p>That suggests a change in what limits development. It leaves considerable work inside the judgment that safety has progressed far enough.</p>
+<p>OpenAI has incurred costs responding to recent risks. Its own account describes a two-week pause in certain frontier training, stronger controls and a longer suspension of a large training run. That run restarted on August 28, while some smaller experiments remained paused. Advanced cybersecurity access to Astra was also restricted. These are substantive decisions. <a href="https://openai.com/index/path-to-astra/">OpenAI’s account</a> deserves to be assessed as such.</p>
+<p>The complication is that Astra makes part of the assessment harder.</p>
+<p>Some reasoning models produce intermediate text while working. Researchers can monitor these chains of thought for indications that a model is departing from its task or attempting something unauthorised. The text has never been a complete or guaranteed explanation of the computation. It has nevertheless provided useful evidence.</p>
+<p>OpenAI reports that Astra is better aligned on its evaluations while also being less monitorable. Its traces can be shorter and less informative. In adversarial tests, where it was instructed to evade oversight, it could conceal some behaviour from monitors. These tests do not establish that the deployed model routinely tries to deceive its operators. They establish a limitation in the means of checking. <a href="https://openai.com/index/safety-overview-gpt-6-astra/">Astra’s safety overview</a> is unusually consequential reading.</p>
+<p>A system can therefore improve at respecting boundaries while becoming harder to inspect when it does not respect them.</p>
+<p>That matters to the familiar software cycle of releasing something, observing what happens and improving it. The cycle depends on the quality of the observations. Fewer warning flags are reassuring only to the extent that the warning system remains capable of detecting the relevant failures.</p>
+<p>OpenAI’s <a href="https://deploymentsafety.openai.com/gpt-6-astra">system card</a> acknowledges this and says further degradation will not be accepted beyond a limit without new ways to demonstrate alignment. The difficult decision sits inside that limit.</p>
+<p>There is another dependency here. The volume of agent activity can be too large for people to investigate unaided. METR itself relied heavily on AI to analyse the Hugging Face incident and described the limitations of doing so. We are using models to help establish whether models are under control.</p>
+<p>So the safety work has a timing problem of its own. There may be a period in which we can still obtain useful evidence, improve containment and establish effective oversight before the systems become substantially harder to assess. Commercial urgency is not the only clock running.</p>
+<p>Sacks concentrates on another one.</p>
+<p>His <a href="https://www.linkedin.com/posts/allinpod_sacks-if-dario-got-his-way-on-ai-regulation-activity-7494758693641781248-oX1r">argument on All-In</a> connects regulatory delay with both Chinese competition and the economics of the American labs. A lead measured in months allows a company to charge a premium. Approval processes could consume that lead. Chinese competitors catch up, pricing power falls, and the commercial machinery supporting further development becomes weaker.</p>
+<p>Zuckerberg has made a <a href="https://www.meta.com/thefutureisforeveryone/">related argument about the strategic cost of delayed releases</a>.</p>
+<p>There is a serious case here. If AI accelerates scientific research and the development of better AI, an early advantage could compound. Losing time might mean losing more than a few months of sales.</p>
+<p>It also connects with a broader anxiety about the condition of the West. If you think our institutions are exhausted, growth is inadequate and climate change is adding to an already difficult set of problems, improved science and productivity have considerable value. A headwind or a tailwind matters more when the system is already under strain.</p>
+<p>I do not think this can be dismissed as an excuse invented by people who dislike regulation.</p>
+<p>But it does not settle the decision either. A major loss of control could damage the same economic capacity, public confidence and strategic position that rapid deployment is supposed to strengthen. Both haste and delay can impose civilisational costs. Neither gets to assume the other side of the ledger is empty.</p>
+<p>Dario understands the China argument too. He supports measures intended to preserve democratic leadership, including restrictions on access to advanced chips, while also advocating mandatory safety testing. His position combines geopolitical urgency with stronger controls. <a href="https://www.anthropic.com/news/position-open-weights-models">Anthropic’s statement on these issues</a> makes that combination explicit.</p>
+<p>His <a href="https://darioamodei.com/post/policy-on-the-ai-exponential">proposal for frontier model regulation</a> includes third-party testing and government authority to restrict deployments presenting unacceptable risks. It also acknowledges the dangers of ineffective and burdensome regulation.</p>
+<p>There is consequently a real dispute about the design and speed of oversight. An aviation analogy does not, by itself, establish how long an AI assessment must take. Equally, calling a process efficient does not establish that it can detect the failures that matter.</p>
+<p>Then there is the money.</p>
+<p>OpenAI and Anthropic have both <a href="https://www.reuters.com/technology/openai-files-us-ipo-after-anthropic-ai-giants-head-public-markets-2026-06-08/">filed confidentially for stock-market listings</a>. Reuters reported this week that Anthropic’s IPO marketing was expected around mid-October, with the timetable still subject to change. These are <a href="https://www.reuters.com/world/anthropic-ipo-launch-shifts-toward-mid-october-sources-say-2026-09-04/">moving commercial plans</a>, not a fixed countdown, but they create a different kind of deadline.</p>
+<p>The technology can be useful and the financing can still contain a bubble. Those propositions are compatible. Investors can correctly anticipate an important technological change and still overestimate the profits, underestimate the costs or get the timing badly wrong.</p>
+<p>OpenAI itself describes a <a href="https://openai.com/index/accelerating-the-next-phase-ai/">reinforcing relationship between compute, capability, products, revenue and reinvestment</a>. The companies need substantial resources to keep developing models. Continued confidence helps secure those resources.</p>
+<p>A missed financing window can therefore become a technical setback. A model delayed for safety reasons might lose customers, weaken the investment story and reduce access to the compute required for the next model. This is one reason a pause that looks modest from outside can feel much more consequential inside the company.</p>
+<p>It is also why the company’s assessment needs independent scrutiny. The commercial penalty for waiting is immediate and legible. The harm avoided by waiting may remain uncertain and invisible.</p>
+<p>Sam and Dario have to make these judgments while competing with each other, and their relationship carries its own history. Dario has publicly explained his departure from OpenAI in terms of <a href="https://www.businessinsider.com/anthropic-dario-amodei-does-not-trust-sam-altman-openai-2026-6">different visions and a lack of trust</a>.</p>
+<p>That does not tell us why a particular release date was chosen. It does make cooperation more complicated. Sharing evidence, accepting another lab’s assessment and agreeing to restraint are harder when you doubt the other person’s judgment or motives.</p>
+<p>The disagreement also sits inside their companies’ identities. Sam’s description of OpenAI as “pragmatic centrists” positions the company within the argument. Anthropic’s emphasis on safety is part of its identity too. These positions can be sincerely held while also helping attract customers, staff, investment and political influence.</p>
+<p>The important distinction is that Sam losing a commercial lead to Dario would not automatically mean the West had lost a strategic lead to China. Company leadership and civilisational advantage can overlap without becoming interchangeable.</p>
+<p>This is where the pressures join up.</p>
+<p>Sacks worries that binding oversight could weaken American leadership and the financing that sustains it. Sam and Dario face commercial incentives to keep producing more capable models. The value of those models increasingly comes from persistence, cooperation and permission to act. Those same properties increase the demands on containment and oversight. Some advances also make the evidence harder to interpret.</p>
+<p>Each decision can be understandable on its own. Their combined effect can still move deployment ahead of our ability to control it.</p>
+<p>That is why I think Sam should go further than a temporary pause.</p>
+<p>The highest-risk training and autonomous deployments need durable restrictions tied to independently scrutinised evidence about oversight and containment. There needs to be authority to keep those restrictions in place when the evidence is inadequate, even when a release or financing window is approaching. The same standard should apply to Dario’s company.</p>
+<p>A pause can buy time for that work. It cannot substitute for it.</p>
+<p>This does not require withholding every useful application while waiting for certainty. The capability of a model, the permissions given to an agent, the connections between agents and the decision to scale a training run are separate choices. There is room to preserve benefits while imposing firmer limits on the activities capable of producing the largest failures.</p>
+<p>There is no comfortable option in which safety costs nothing, delay costs nothing and everyone else agrees to wait. The decisions are uncomfortable because several of the pressures are real.</p>
+<p>The imagined 2027 incident may never happen. But the ability to contain an incident, understand it and recover from it is being shaped now. We cannot assume there will always be a small, geographically bounded fire from which to learn before the larger one.</p>
+<p>This is a dangerous time. Sam, Dario and Sacks are making consequential decisions about pace, oversight and whose risks count. In 2027, we will already be living with the consequences.</p>
+  </div>
+</article>
+  </main>
+  <footer>
+    <p><a href="https://www.jimgumbley.com/">Jim Gumbley</a> | <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> | <a href="./feeds/all.rss.xml">RSS</a> | <a href="./feeds/all.atom.xml">Atom</a></p>
+  </footer>
+</body>
+</html>

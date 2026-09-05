@@ -6,6 +6,7 @@ Slug: the-codes-the-thing
 Author: Jim Gumbley
 Summary: Why working software, not documentation or ceremony, is the artifact that actually reduces uncertainty — and why that lesson still holds in the AI era.
 Image: images/wheel.jpeg
+ImageAlt: A large wooden water wheel standing in a field beneath a blue sky.
 
 Sat thinking about management, technology and organisations, which is rarely a good sign.
 

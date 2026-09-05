@@ -3,6 +3,8 @@
 
 AUTHOR = 'Jim Gumbley'
 SITENAME = 'fragmented sentences'
+SITESUBTITLE = 'Jim Gumbley - AI, cyber, software and the zeitgeist.'
+SITEDESCRIPTION = 'Jim Gumbley on AI, cyber, software and the zeitgeist.'
 SITEURL = 'https://www.jimgumbley.com/blog'
 
 PATH = 'content'

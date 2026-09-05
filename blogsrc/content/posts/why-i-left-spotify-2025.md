@@ -6,6 +6,7 @@ Slug: why-i-left-spotify-2025
 Author: Jim Gumbley
 Summary: After fourteen years as a loyal Spotify customer, I finally cancelled my subscription. Here's why the platform's algorithmic direction no longer matches my simple, self-curated listening style.
 Image: images/Talking_Heads_Remain_In_Light_(1980_Sire_publicity_photo)_(5-4_cropped).jpg
+ImageAlt: Black-and-white publicity portrait of the four members of Talking Heads.
 
 # Why I Left Spotify
 

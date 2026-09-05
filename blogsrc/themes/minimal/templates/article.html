@@ -45,14 +45,19 @@
 {% endblock structured_data %}
 
 {% block content %}
-<article>
-  <h1>{{ article.title }}</h1>
-  <div class="post-info">{{ article.locale_date }}</div>
+{% set reading_minutes = ((article.content|striptags|length / 1200)|round(0, 'ceil'))|int %}
+<article class="post">
+  <header class="post-header">
+    <h1>{{ article.title }}</h1>
+    <p class="post-info"><a href="https://www.jimgumbley.com/">{{ article.author }}</a> · {{ article.category }} · <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time> · {{ reading_minutes }} min read</p>
+  </header>
   {% if article.image %}
   <div class="article-image">
-    <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+    <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.imagealt }}" decoding="async">
   </div>
   {% endif %}
-  {{ article.content }}
+  <div class="post-content">
+    {{ article.content }}
+  </div>
 </article>
 {% endblock %}

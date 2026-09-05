@@ -6,6 +6,7 @@ Slug: ai-agency-security-perspective
 Author: Jim Gumbley
 Summary: We're not 6 months from AGI; we're 6 months from confronting the security implications of AI systems with real-world agency.
 Image: images/robotfail.jpg
+ImageAlt: A humanoid robot lying on its side on sandy ground.
 
 We're not 6 months from AGI. We're 6 months from an inflection point where LLMs are being given real-world agency – with all the security and governance implications that entails. Different ways of describing the same phenomena, one grounded in Silicon Valley marketing, the other in operational reality.
 

@@ -6,6 +6,7 @@ Slug: anthropic-interview-ai-vision
 Author: Jim Gumbley
 Summary: Reflections from an Anthropic research interview on why language models need honest framing, and why human agency has to stay at the centre.
 Image: images/ai_interview.jpg
+ImageAlt: An Anthropic interview invitation over a sunlit woodland path.
 
 I recently participated in a research interview run by Anthropic about how people imagine AI fitting into their lives.[^1] The irony was obvious: an AI asking about AI, on behalf of the company whose strategy crystallizes many of my worries about where this technology is headed.
 
