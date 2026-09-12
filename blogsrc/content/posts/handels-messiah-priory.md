@@ -1,4 +1,4 @@
-Title: A soothing Handel's Messiah at Great Malvern Priory
+Title: Handel's Messiah at Great Malvern Priory
 Date: 2025-12-06
 Category: Music
 Tags: handel, messiah, classical music, baroque
