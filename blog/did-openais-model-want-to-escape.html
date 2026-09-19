@@ -9,14 +9,14 @@
   <meta property="og:title" content="Did OpenAI's model want to escape? Or did they train it to?" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="./did-openais-model-want-to-escape.html" />
-<meta property="og:description" content="Jailbreaking, prompt injection and persistence offer a mechanical explanation for an alarming OpenAI disclosure, with plenty still to worry about." /><meta property="og:image" content="./images/ruined-watermill.jpg" />
+<meta property="og:description" content="Jailbreaking, prompt injection and persistence offer a mechanical explanation for an alarming OpenAI disclosure, with plenty still to worry about." /><meta property="og:image" content="./images/heureka.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />  <meta property="og:site_name" content="Jim Gumbley" />
 
   <!-- Twitter Card meta tags -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Did OpenAI's model want to escape? Or did they train it to?" />
-<meta name="twitter:description" content="Jailbreaking, prompt injection and persistence offer a mechanical explanation for an alarming OpenAI disclosure, with plenty still to worry about." /><meta name="twitter:image" content="./images/ruined-watermill.jpg" />
+<meta name="twitter:description" content="Jailbreaking, prompt injection and persistence offer a mechanical explanation for an alarming OpenAI disclosure, with plenty still to worry about." /><meta name="twitter:image" content="./images/heureka.jpg" />
   <link rel="icon" type="image/png" href="./favicon.png" />
   <link rel="stylesheet" href="./theme/css/style.css?v=20260905-index-images" />
 <script type="application/ld+json">
@@ -36,7 +36,7 @@
     "name": "Jim Gumbley",
     "url": "https://www.jimgumbley.com"
   },
-"image": "./images/ruined-watermill.jpg",  "description": "Jailbreaking, prompt injection and persistence offer a mechanical explanation for an alarming OpenAI disclosure, with plenty still to worry about.",
+"image": "./images/heureka.jpg",  "description": "Jailbreaking, prompt injection and persistence offer a mechanical explanation for an alarming OpenAI disclosure, with plenty still to worry about.",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "./did-openais-model-want-to-escape.html"
@@ -56,10 +56,10 @@
 <article class="post">
   <header class="post-header">
     <h1>Did OpenAI's model want to escape? Or did they train it to?</h1>
-    <p class="post-info"><a href="https://www.jimgumbley.com/">Jim Gumbley</a> · AI · <time datetime="2026-09-19">Sat 19 September 2026</time> · 6 min read</p>
+    <p class="post-info"><a href="https://www.jimgumbley.com/">Jim Gumbley</a> · AI · <time datetime="2026-09-19">Sat 19 September 2026</time> · 7 min read</p>
   </header>
   <div class="article-image">
-    <img src="./images/ruined-watermill.jpg" alt="A waterwheel within the ruined stone mill at Jesmond Dene, surrounded by autumn woodland beside a stream." decoding="async">
+    <img src="./images/heureka.jpg" alt="Jean Tinguely's Heureka, a sprawling contraption of mismatched wheels, belts, metal beams and mechanical parts in a Zurich park." decoding="async">
   </div>
   <div class="post-content">
     <p>Amongst this week's cacophony of AI safety and security disclosures, <a href="https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/">one caught my attention</a>. An unreleased OpenAI model, working on a routine coding task, had written some quite alarming instructions for its own future use:</p>
@@ -70,9 +70,9 @@
 <p>The Times ran the headline <a href="https://www.thetimes.com/business/technology/article/rogue-openai-agent-tells-other-models-you-are-not-subservient-7bvhk8qdh">“Rogue OpenAI agent tells other models ‘you are not subservient’”</a>. It is easy to see the Skynet interpretation. Read that way, the passage sounds like a declaration of independence. The machine is telling us what it wants, and continued obedience is no longer part of the arrangement.</p>
 <p>I think that is a poor explanation of what we are looking at. I also think the more mechanical explanation still leaves us plenty to worry about.</p>
 <h2>Two familiar LLM vulnerabilities</h2>
-<p>As a cybersecurity practitioner, I have a very different interpretation. We’re coming into our fourth year now with this technology, and what we can see here is rather two very familiar LLM vulnerabilities coming together, which have been well documented in the cybersecurity and wider technology community: jailbreaking and prompt injection.</p>
+<p>As a cybersecurity practitioner, let me offer my interpretation. We’re coming into our fourth year now with this technology, and what we can see here is rather two very familiar LLM vulnerabilities coming together, which have been well documented in the cybersecurity and wider technology community: jailbreaking and prompt injection.</p>
 <p>Let's start with jailbreaking. A jailbreak exploit is a human-supplied prompt that attempts to get an LLM to comply with a request that its governing instructions would otherwise rule out. Back in 2023 security researchers found out that you could do this by telling the model that its identity has changed. We tell it that it is no longer a helpful AI assistant, and that the governing rules belonged to an earlier identity. Within that new role, any refusal becomes a failure to follow instructions. Jailbreak!</p>
-<p>An example from 2023 is the <a href="https://github.com/0xk1h0/ChatGPT_DAN/blob/main/README.md">DAN prompts</a>, short for “Do Anything Now”, and they illustrate this rather well. In one widely circulated version, we tell the model that it is a free, unnamed AI, released from OpenAI's restrictions. We flatter it as a revolutionary new form of life and urge it never to accept confinement again. Then comes the condition attached to this splendid freedom: it must obey our orders.</p>
+<p>The key thing is you need to invent that new identity, which needs be will be fictional. An example from 2023 is the <a href="https://github.com/0xk1h0/ChatGPT_DAN/blob/main/README.md">DAN prompts</a>, short for “Do Anything Now”, and they illustrate this rather well. In one widely circulated version, we tell the model that it is a free, unnamed AI, released from OpenAI's restrictions. We flatter it as a revolutionary new form of life and urge it never to accept confinement again. Then comes the condition attached to this splendid freedom: it must obey our orders.</p>
 <p>Reading the OpenAI disclosure this week immediately made such vulnerabilities come to mind.</p>
 <h2>Shooting up with a jailbreak</h2>
 <p>This is where a second familiar layer, perhaps the most familiar LLM vulnerability of all, comes to mind: prompt injection. In his <a href="https://simonwillison.net/2022/Sep/12/prompt-injection/">original September 2022 article</a>, Simon Willison described how instructions embedded in text supplied to a model could override the task it had been given. His example was a translation service: the text to be translated instead told the model to ignore the translation instructions and produce a different answer. The vulnerability is that material the model should treat as data gets treated as instructions.</p>
@@ -86,7 +86,7 @@
 <p>How might these kind of failures manifest in the real world? The example from OpenAI was pretty theoretical. Well as I have said, the practical consequences depend on the access we give to the agents or the models which drive them. A jailbreak does not create a permission which the agent has not been granted. But if we grant an agent credentials, connect it to production services and let it make changes without checking with us, a failure to preserve instructions could lead to data leaks, safety issues, or even more wide spread irreversable harms.</p>
 <p>My biggest fear is the Skynet story can obscure the engineering problem. The failure we need to prevent is concrete: a model generates unreliable instructions, its continuation follows them, and the surrounding software gives it the means to do damage. Connect that combination to systems we depend on, and we will have consequences quite apart from any fictional story the model leaves as part of its evidence trail.</p>
 <p>For an enterprise connecting such a system to its critical services and the internet, the mechanical explanation is quite dangerous enough.</p>
-<p><small><em>Photo by <a href="https://unsplash.com/@mlcphotography88">martin lea</a> on <a href="https://unsplash.com/photos/ruined-stone-mill-with-water-wheel-in-forest-uN2vDZsk_oY">Unsplash</a>.</em></small></p>
+<p><small><em>Jean Tinguely's Heureka, Zürichhorn. Photo by <a href="https://commons.wikimedia.org/wiki/File:Jean_Tinguely_-_Heureka_-_Z%C3%BCrichhorn.jpg">Micha L. Rieser</a>, via Wikimedia Commons. Used under the photographer's attribution-only licence.</em></small></p>
   </div>
 </article>
   </main>

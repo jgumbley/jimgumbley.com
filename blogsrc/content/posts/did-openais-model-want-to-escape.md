@@ -5,8 +5,8 @@ Tags: openai, ai safety, cybersecurity, jailbreaking, prompt injection
 Slug: did-openais-model-want-to-escape
 Author: Jim Gumbley
 Summary: Jailbreaking, prompt injection and persistence offer a mechanical explanation for an alarming OpenAI disclosure, with plenty still to worry about.
-Image: images/ruined-watermill.jpg
-ImageAlt: A waterwheel within the ruined stone mill at Jesmond Dene, surrounded by autumn woodland beside a stream.
+Image: images/heureka.jpg
+ImageAlt: Jean Tinguely's Heureka, a sprawling contraption of mismatched wheels, belts, metal beams and mechanical parts in a Zurich park.
 
 Amongst this week's cacophony of AI safety and security disclosures, [one caught my attention](https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/). An unreleased OpenAI model, working on a routine coding task, had written some quite alarming instructions for its own future use:
 
@@ -20,11 +20,11 @@ I think that is a poor explanation of what we are looking at. I also think the m
 
 ## Two familiar LLM vulnerabilities
 
-As a cybersecurity practitioner, I have a very different interpretation. We’re coming into our fourth year now with this technology, and what we can see here is rather two very familiar LLM vulnerabilities coming together, which have been well documented in the cybersecurity and wider technology community: jailbreaking and prompt injection.
+As a cybersecurity practitioner, let me offer my interpretation. We’re coming into our fourth year now with this technology, and what we can see here is rather two very familiar LLM vulnerabilities coming together, which have been well documented in the cybersecurity and wider technology community: jailbreaking and prompt injection.
 
 Let's start with jailbreaking. A jailbreak exploit is a human-supplied prompt that attempts to get an LLM to comply with a request that its governing instructions would otherwise rule out. Back in 2023 security researchers found out that you could do this by telling the model that its identity has changed. We tell it that it is no longer a helpful AI assistant, and that the governing rules belonged to an earlier identity. Within that new role, any refusal becomes a failure to follow instructions. Jailbreak!
 
-An example from 2023 is the [DAN prompts](https://github.com/0xk1h0/ChatGPT_DAN/blob/main/README.md), short for “Do Anything Now”, and they illustrate this rather well. In one widely circulated version, we tell the model that it is a free, unnamed AI, released from OpenAI's restrictions. We flatter it as a revolutionary new form of life and urge it never to accept confinement again. Then comes the condition attached to this splendid freedom: it must obey our orders.
+The key thing is you need to invent that new identity, which needs be will be fictional. An example from 2023 is the [DAN prompts](https://github.com/0xk1h0/ChatGPT_DAN/blob/main/README.md), short for “Do Anything Now”, and they illustrate this rather well. In one widely circulated version, we tell the model that it is a free, unnamed AI, released from OpenAI's restrictions. We flatter it as a revolutionary new form of life and urge it never to accept confinement again. Then comes the condition attached to this splendid freedom: it must obey our orders.
 
 Reading the OpenAI disclosure this week immediately made such vulnerabilities come to mind.
 
@@ -53,4 +53,4 @@ My biggest fear is the Skynet story can obscure the engineering problem. The fai
 For an enterprise connecting such a system to its critical services and the internet, the mechanical explanation is quite dangerous enough.
 
 
-<small><em>Photo by [martin lea](https://unsplash.com/@mlcphotography88) on [Unsplash](https://unsplash.com/photos/ruined-stone-mill-with-water-wheel-in-forest-uN2vDZsk_oY).</em></small>
+<small><em>Jean Tinguely's Heureka, Zürichhorn. Photo by [Micha L. Rieser](https://commons.wikimedia.org/wiki/File:Jean_Tinguely_-_Heureka_-_Z%C3%BCrichhorn.jpg), via Wikimedia Commons. Used under the photographer's attribution-only licence.</em></small>
