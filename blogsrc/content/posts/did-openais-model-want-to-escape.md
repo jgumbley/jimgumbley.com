@@ -5,8 +5,8 @@ Tags: openai, ai safety, cybersecurity, jailbreaking, prompt injection
 Slug: did-openais-model-want-to-escape
 Author: Jim Gumbley
 Summary: Jailbreaking, prompt injection and persistence offer a mechanical explanation for an alarming OpenAI disclosure, with plenty still to worry about.
-Image: images/damaged-waterwheel.jpg
-ImageAlt: A damaged wooden waterwheel inside Dunham Massey Sawmill.
+Image: images/ruined-watermill.jpg
+ImageAlt: A waterwheel within the ruined stone mill at Jesmond Dene, surrounded by autumn woodland beside a stream.
 
 Amongst this week's cacophony of AI safety and security disclosures, [one caught my attention](https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/). An unreleased OpenAI model, working on a routine coding task, had written some quite alarming instructions for its own future use:
 
@@ -53,4 +53,4 @@ My biggest fear is the Skynet story can obscure the engineering problem. The fai
 For an enterprise connecting such a system to its critical services and the internet, the mechanical explanation is quite dangerous enough.
 
 
-<small><em>Photo by David Dixon: [Damaged Waterwheel, Dunham Massey Sawmill](https://www.geograph.org.uk/photo/4013485), 3 June 2014. Licensed under [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/).</em></small>
+<small><em>Photo by [martin lea](https://unsplash.com/@mlcphotography88) on [Unsplash](https://unsplash.com/photos/ruined-stone-mill-with-water-wheel-in-forest-uN2vDZsk_oY).</em></small>
