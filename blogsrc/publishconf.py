@@ -10,7 +10,7 @@ from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
 SITEURL = 'https://jimgumbley.com/blog'
-OUTPUT_PATH = '../blog'  # Ensure output goes to the blog directory
+OUTPUT_PATH = '../_site/blog'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'

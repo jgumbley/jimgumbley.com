@@ -24,7 +24,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "weddingsrc"
-OUTPUT = ROOT / "wedding"
+OUTPUT = ROOT / "_site" / "wedding"
 MANIFEST = SOURCE / "manifest.json"
 SCHEMA = SOURCE / "manifest.schema.json"
 TEMPLATE = SOURCE / "page.html"
@@ -679,7 +679,7 @@ def install(data: dict, manifest_raw: bytes) -> None:
     stage = Path(tempfile.mkdtemp(prefix=".wedding-stage-", dir=ROOT))
     try:
         stage_site(data, manifest_raw, stage)
-        OUTPUT.mkdir(exist_ok=True)
+        OUTPUT.mkdir(parents=True, exist_ok=True)
         (OUTPUT / "assets").mkdir(exist_ok=True)
         for relative in CONTROLLED:
             os.replace(stage / relative, OUTPUT / relative)
@@ -729,7 +729,7 @@ def main() -> int:
             print("Wedding site checks passed.")
         else:
             install(data, manifest_raw)
-            print("Wedding site generated in wedding/.")
+            print("Wedding site generated in _site/wedding/.")
     except BuildError as exc:
         print(f"wedding build failed: {exc}", file=sys.stderr)
         return 1

@@ -8,7 +8,7 @@ SITEDESCRIPTION = 'Jim Gumbley on AI, cyber, software and the zeitgeist.'
 SITEURL = 'https://www.jimgumbley.com/blog'
 
 PATH = 'content'
-OUTPUT_PATH = '../blog'  # Output directly to the blog directory
+OUTPUT_PATH = '../_site/blog'
 
 TIMEZONE = 'Europe/London'
 

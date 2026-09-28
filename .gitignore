@@ -1,3 +1,4 @@
 venv
 blogsrc/__pycache__
-
+/_site/
+/app.log

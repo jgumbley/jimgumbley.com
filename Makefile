@@ -3,23 +3,21 @@ include common.mk
 # Makefile for Website and Blog
 
 define success
-	@tput setaf 2; \
-	echo ""; \
-	owls="🦉 🦆 🦢 🐦 🦜"; \
-	n=$$(expr $$(od -An -N2 -tu2 /dev/urandom | tr -d ' ') % 5 + 1); \
-	owl=$$(echo $$owls | cut -d' ' -f$$n); \
-	printf "%s > \033[33m%s\033[0m completed [OK]\n" "$$owl" "$(@)"; \
-	tput sgr0;
+	@printf '%s completed [OK]\n' '$(@)'
 endef
 
-.PHONY: preview clean cleanblog clean_venv cleanwedding html site wedding wedding-assets wedding-check venv
+.PHONY: preview clean clean-site cleanblog clean_venv cleanwedding html site wedding wedding-assets wedding-check site-check venv
 
-site: html wedding
+site: clean-site
+	mkdir -p _site
+	cp index.html web_ss.css pics.js favicon.ico favicon.png CNAME wedding-preview.png _site/
+	cp -R pics _site/pics
+	$(MAKE) html wedding
 	$(call success)
 
 # Website preview
 preview: site
-	python3 -m http.server
+	python3 -m http.server --directory _site
 	$(call success)
 
 # Wedding site
@@ -38,7 +36,7 @@ wedding-assets: venv
 
 # Blog targets
 SRCDIR=./blogsrc
-OUTPUTDIR=./blog
+OUTPUTDIR=./_site/blog
 CONFFILE=$(SRCDIR)/pelicanconf.py
 PUBLISHCONF=$(SRCDIR)/publishconf.py
 
@@ -52,18 +50,16 @@ venv/.requirements-installed: $(SRCDIR)/requirements.txt
 	$(call success)
 
 cleanblog:
-	rm -rf blog/
-	mkdir blog/
+	rm -rf _site/blog/
 	$(call success)
 
-clean: cleanblog cleanwedding clean_venv
+clean: clean-site clean_venv
+
+clean-site:
+	rm -rf _site/
 
 cleanwedding:
-	rm -f wedding/index.html wedding/manifest.json wedding/wedding.css wedding/wedding.js \
-		wedding/assets/beehive.svg wedding/assets/botanical-frame.svg wedding/assets/botanical-divider.svg \
-		wedding/assets/flower-favicon.svg wedding/assets/favicon-32.png \
-		wedding/assets/apple-touch-icon.png wedding/assets/social-preview.svg \
-		wedding/assets/social-preview.png
+	rm -rf _site/wedding/
 	$(call success)
 
 clean_venv:
@@ -72,4 +68,19 @@ clean_venv:
 html: cleanblog venv
 	. venv/bin/activate && \
 	pelican $(SRCDIR)/content -o $(OUTPUTDIR) -s $(CONFFILE)
+	$(call success)
+
+# Check the complete publish directory and the wedding generator's invariants.
+site-check: site
+	node --check pics.js
+	node --check weddingsrc/static/wedding.js
+	venv/bin/python weddingsrc/generate.py --check
+	test -s _site/index.html
+	test -s _site/blog/index.html
+	test -s _site/blog/feeds/all.atom.xml
+	test -s _site/blog/feeds/all.rss.xml
+	cmp CNAME _site/CNAME
+	test ! -e _site/blogsrc
+	test ! -e _site/weddingsrc
+	test ! -e _site/venv
 	$(call success)
