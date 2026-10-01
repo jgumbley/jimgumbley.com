@@ -206,15 +206,24 @@ test('root forwarding preserves the caller working directory and upload path con
   assert.ok(result.stdout.includes(`CALLER=${process.cwd()}\nUPLOAD=./my photos/video.mov`));
 });
 
-test('Actions verifies OIDC on main through Make without deploying resources', async () => {
-  const workflow = await readFile(new URL('../.github/workflows/infra.yml', import.meta.url), 'utf8');
+test('one pipeline builds, applies Terraform, then deploys Pages, stopping on failure', async () => {
+  const workflow = await readFile(new URL('../.github/workflows/pages.yml', import.meta.url), 'utf8');
+  await assert.rejects(readFile(new URL('../.github/workflows/infra.yml', import.meta.url)), { code: 'ENOENT' });
   assert.match(workflow, /branches: \[main\]/);
   assert.match(workflow, /if: github.ref == 'refs\/heads\/main'/);
   assert.match(workflow, /cancel-in-progress: false/);
   assert.match(workflow, /id-token: write/);
+  const jobs = workflow.split('\njobs:\n')[1];
+  assert.deepEqual([...jobs.matchAll(/^  (\w+):$/gm)].map(match => match[1]), ['build', 'terraform', 'deploy']);
+  assert.match(jobs, /  terraform:\n    needs: build\n/);
+  assert.match(jobs, /  deploy:\n    needs: terraform\n/);
+  assert.ok(!/always\(|continue-on-error/.test(workflow));
+  const terraformJob = jobs.split('  terraform:\n')[1].split('  deploy:\n')[0];
+  assert.ok(!/environment:|pages: write/.test(terraformJob));
+  assert.ok(workflow.indexOf('run: make infra-test') < workflow.indexOf('uses: aws-actions/configure-aws-credentials'));
   assert.ok(workflow.indexOf('uses: aws-actions/configure-aws-credentials') < workflow.indexOf('run: make -f infra/Makefile aws-identity'));
-  assert.ok(!/terraform|wedding-upload|WEDDING_/.test(workflow));
+  assert.ok(workflow.indexOf('run: make wedding-upload-apply') < workflow.indexOf('uses: actions/deploy-pages'));
   assert.ok(!/aws-access-key-id|aws-secret-access-key|secrets\./.test(workflow));
   const commands = [...workflow.matchAll(/run: (.+)/g)].map(match => match[1]);
-  assert.deepEqual(commands, ['make -f infra/Makefile aws-identity']);
+  assert.deepEqual(commands, ['make site-check', 'make infra-test', 'make -f infra/Makefile aws-identity', 'make wedding-upload-plan', 'make wedding-upload-apply']);
 });

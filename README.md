@@ -21,8 +21,10 @@ regenerates the reviewed PNG assets from the SVG masters. Generated blog and
 wedding output is no longer committed. Public paths, including `/blog/`,
 `/wedding/`, `/pics/` and `/wedding-preview.png`, are preserved.
 
-Every push to `main` builds, checks and deploys only `_site/` through the official
-GitHub Pages actions on `ubuntu-latest`. There is no pull request workflow.
+Every push to `main` runs one pipeline: build and test, Terraform plan/apply, then
+deploy only `_site/` through the official GitHub Pages actions. Each stage requires
+the previous stage to succeed. Configure the AWS and wedding variables described
+in [infra/](infra/README.md) before pushing. There is no pull request workflow.
 
 In repository **Settings → Pages → Build and deployment**, change **Source**
 from **Deploy from a branch** to **GitHub Actions**, preserving the existing

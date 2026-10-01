@@ -41,20 +41,20 @@ Terraform configurations require at least 1.10 for native S3 locking.
    local file and writes its hash to `infra/wedding/guest.auto.tfvars.json`. In
    GitHub **Settings → Secrets and variables → Actions → Variables**, set
    `WEDDING_GUEST_TOKEN_SHA256` to that file's `guest_token_sha256` value. Set
-   `WEDDING_CLOSING_AT` to the agreed absolute UTC timestamp, such as
-   `2027-01-01T00:00:00Z`. That is an example, not a configured deadline. Never put
-   the raw guest token in GitHub.
-6. Merge infrastructure changes to `main`. Actions tests, authenticates using
-   temporary AWS credentials, plans and applies the wedding infrastructure.
-   Variable changes do not trigger a push: use **Actions → Deploy AWS
-   infrastructure → Run workflow**, selecting `main`, to deploy a later hash/date
-   change or retry deployment after completing setup.
+   `WEDDING_CLOSING_AT` to `2026-10-15T00:00:00Z` (15 October 2026 at midnight
+   UTC), the agreed closing date. Never put the raw guest token in GitHub.
+6. Push to `main`. The **Build and deploy site** pipeline builds and tests, then
+   plans/applies wedding infrastructure using temporary AWS credentials, then
+   deploys the built site to Pages. Variable changes do not trigger a push: use
+   **Actions → Build and deploy site → Run workflow**, selecting `main`, to rerun
+   after a hash/date change or after completing setup.
 
 No permanent AWS credentials are stored in GitHub. Authentication follows
 [GitHub's AWS OIDC guidance](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws).
 Trust uses exact `main` subjects for this repository, supporting legacy and
-immutable-ID formats. Bootstrap rejects custom OIDC subjects. The deployment job
+immutable-ID formats. Bootstrap rejects custom OIDC subjects. The Terraform job
 has no GitHub environment because environment subjects differ from branch subjects.
+Only the final Pages job uses the `github-pages` environment.
 
 ## Commands and deployment
 
@@ -68,12 +68,14 @@ has no GitHub environment because environment subjects differ from branch subjec
 | `make wedding-upload-token` | Generate a local guest token and its hash once |
 | `make wedding-upload` | Upload one file using the guest token |
 
-The AWS workflow is separate from Pages. It runs for changes under `infra/`, the
-root Makefile or its workflow definition, and only deploys from `main`. Tests run
-before AWS authentication. Deployments share one concurrency group and never
-cancel an active apply. Failed tests/plans stop deployment. Terraform/API errors
-remain visible in Actions logs; a successful apply prints the upload endpoint
-and bucket name. Verify the first deployment with the [upload CLI](wedding/README.md).
+One workflow, `.github/workflows/pages.yml`, runs on every push to `main`:
+**build and test → Terraform plan/apply → Pages deployment**. The build job saves
+the site artifact; Pages publishes that artifact only after Terraform succeeds.
+Tests run before AWS authentication. The whole pipeline shares one concurrency
+group and never cancels an active apply. Failed builds, tests, plans or applies
+prevent Pages deployment. Terraform/API errors remain visible in Actions logs;
+a successful apply prints the upload endpoint and bucket name. Verify the first
+deployment with the [upload CLI](wedding/README.md).
 
 For local plan/apply, export `AWS_REGION`, `TF_STATE_BUCKET` and
 `AWS_RUNTIME_BOUNDARY_ARN` from bootstrap's values, authenticate AWS locally, and

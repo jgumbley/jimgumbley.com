@@ -3,34 +3,81 @@ name: Build and deploy site
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
 jobs:
   build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: '1.15.8'
+          terraform_wrapper: false
       - name: Build and check site
         run: make site-check
+      - name: Test infrastructure without AWS credentials
+        run: make infra-test
       - name: Upload site
         uses: actions/upload-pages-artifact@v4
         with:
           path: _site/
 
-  deploy:
+  terraform:
     needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      TF_STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+      AWS_RUNTIME_BOUNDARY_ARN: ${{ vars.AWS_RUNTIME_BOUNDARY_ARN }}
+      TF_VAR_closing_at: ${{ vars.WEDDING_CLOSING_AT }}
+      TF_VAR_guest_token_sha256: ${{ vars.WEDDING_GUEST_TOKEN_SHA256 }}
+      TF_IN_AUTOMATION: 'true'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: '1.15.8'
+          terraform_wrapper: false
+      - name: Authenticate to AWS through GitHub OIDC
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+          role-session-name: github-${{ github.run_id }}
+      - name: Print the AWS account and assumed role
+        run: make -f infra/Makefile aws-identity
+      - name: Plan wedding infrastructure
+        run: make wedding-upload-plan
+      - name: Apply the saved plan
+        run: make wedding-upload-apply
+
+  deploy:
+    needs: terraform
     runs-on: ubuntu-latest
     permissions:
       pages: write
       id-token: write
-    concurrency:
-      group: github-pages
-      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
