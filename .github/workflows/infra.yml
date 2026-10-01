@@ -1,0 +1,35 @@
+name: Verify AWS access
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'infra/**'
+      - 'Makefile'
+      - '.github/workflows/infra.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-aws-identity
+  cancel-in-progress: false
+
+jobs:
+  identity:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Authenticate to AWS through GitHub OIDC
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+          role-session-name: github-${{ github.run_id }}
+      - name: Print the AWS account and assumed role
+        run: make -f infra/Makefile aws-identity

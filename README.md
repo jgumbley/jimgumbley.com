@@ -2,6 +2,11 @@
 
 Static source of my unnecessary vanity website.
 
+AWS infrastructure is managed under [infra/](infra/README.md), including its own
+Makefile. Run `make infra-test` for local checks and `make bootstrap` for the
+one-time repository setup. GitHub Actions then deploys wedding upload
+infrastructure from `main` using OIDC; the guest upload client is local.
+
 Run `make site` to rebuild the complete site in ignored `_site/`. Requires
 Python 3 with venv support; Python dependencies are installed automatically.
 `make site-check` also checks the output and wedding site (requires Node.js).

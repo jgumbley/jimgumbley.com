@@ -1,0 +1,8 @@
+.local/
+.terraform/
+*.tfstate*
+*.tfplan
+*.auto.tfvars.json
+terraform.tfvars
+lambda.zip
+/bootstrap/backend.generated.tf.json

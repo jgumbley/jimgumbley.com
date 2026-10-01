@@ -1,5 +1,10 @@
 include common.mk
 
+# Infrastructure recipes live together; forwarding preserves relative upload paths.
+.PHONY: bootstrap infra-test wedding-upload-token wedding-upload-test wedding-upload-plan wedding-upload-apply wedding-upload
+bootstrap infra-test wedding-upload-token wedding-upload-test wedding-upload-plan wedding-upload-apply wedding-upload:
+	$(MAKE) -f infra/Makefile $@
+
 # Makefile for Website and Blog
 
 define success
